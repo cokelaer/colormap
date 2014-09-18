@@ -5,12 +5,12 @@ Installation
 Prerequisites
 ===============
 
-Of course, you will need to install `Python <http://www.python.org/download/>`_
-(linux and mac users should have it installed already). We recommend also to install `ipython <http://ipython.org/>`_, which provides a more flexible shell alternative to the python shell itself. **colormap** requires matplotlib and **easydev**, which are available on pypi.
+You will need to install `Python <http://www.python.org/download/>`_
+(linux and mac users should have it installed already). We recommend also to install `ipython <http://ipython.org/>`_, which provides a more flexible shell alternative to the python shell itself. **colormap** requires matplotlib and **easydev**, which are available on pypi and installed automatically with this package.
 
 Installation
 ================
-Since **colormap** is available on `PyPi <http://pypi.python.org/>`_, the following command should install the package and its dependencies automatically:: 
+Since **colormap** is available on `PyPi <http://pypi.python.org/colormap>`_, the following command should install the package and its dependencies automatically:: 
 
     pip install colormap
 
