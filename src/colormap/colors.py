@@ -25,7 +25,8 @@ standard Python module called :mod:`colorsys` or in matplotlib.colors
 # matplotlib dependence is only inside Colormap class
 import colorsys
 from easydev.tools import check_param_in_list, swapdict, check_range
-from xfree86 import XFree86_colors
+from colormap import xfree86
+from colormap.xfree86 import XFree86_colors
 
 
 __all__ = ["HEX", "Color", "hex2web", "web2hex", "hex2rgb", "hex2dec",
