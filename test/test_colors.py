@@ -161,12 +161,11 @@ def test_to_intensity():
 
 
 def test_colormap():
-    from easydev.colors import ColorMapTools
     try:
         from pylab import close, clf, gcf
     except:
         return
-    c = ColorMapTools()
+    c = Colormap()
     cmap = c.get_cmap_heat()
     #c.test_cmap(cmap)
     f = gcf()
@@ -177,7 +176,7 @@ def test_colormap():
     d = {'blue': [0,0,0,1,1,1,0],
          'green':[0,1,1,1,0,0,0],
          'red':  [1,1,0,0,0,1,1]}
-    cmap = c.get_cmap(d, reverse=True)
+    cmap = c.cmap(d, reverse=True)
     cmap = c.get_cmap_rainbow()
     cmap = c.get_cmap_red_green()
     cmap = c.get_cmap_heat_r()
@@ -190,6 +189,23 @@ def test_colormap():
          '#CC00FFFF','#FF00E6FF','#FF0099FF', '#FF004DFF']
     # FIXME: need to find a way to close the plot. close('all') does not work
     # c.plot_rgb_from_hex_list(t) 
+    c.plot_colormap('misc')
+    #c.plot_colormap('jet')
+    c.test_colormap('jet')
+    c.diverging
+    c.colormaps
+    c.sequentials
+    c.sequentials2
+    c.qualitative
+
+
+    t = ['#FF0000FF', '#FF4D00FF', '#FF9900FF','#FFE500FF',
+    '#CCFF00FF', '#80FF00FF','#33FF00FF', '#00FF19FF',
+    '#00FF66FF','#00FFB2FF','#00FFFFFF','#00B3FFFF',
+    '#0066FFFF','#001AFFFF','#3300FFFF','#7F00FFFF',
+    '#CC00FFFF','#FF00E6FF','#FF0099FF','#FF004DFF']
+    c.plot_rgb_from_hex_list(t)
+    c.test_colormap() # no input plots the heat map
 
 
 def test_HEX():
@@ -226,3 +242,5 @@ def test_HEX():
         assert False
     except:
         assert True
+
+
