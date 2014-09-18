@@ -9,6 +9,6 @@ except:
         version = ''
 
 
-import colors
+from . import colors
 from colors import *
 import xfree86
