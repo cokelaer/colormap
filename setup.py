@@ -20,7 +20,7 @@ metainfo = {
     'description':'Utilities to ease manipulation of matplotlib colormaps and color codecs (e.g., hex2rgb)',
     'platforms' : ['Linux', 'Unix', 'MacOsX', 'Windows'],
     'keywords' : ["hex2web", "web2hex", "hex2rgb", "rgb2hex", "rgb2hsv", "hsv2rgb", 
-        "rgb2hls", "hls2rgb", "colormap"],
+        "rgb2hls", "hls2rgb", "colormap", 'colors'],
     'classifiers' : [
           'Development Status :: 5 - Production/Stable',
           'Intended Audience :: Developers',

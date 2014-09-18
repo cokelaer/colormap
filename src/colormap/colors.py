@@ -25,12 +25,12 @@ standard Python module called :mod:`colorsys` or in matplotlib.colors
 # matplotlib dependence is only inside Colormap class
 import colorsys
 from easydev.tools import check_param_in_list, swapdict, check_range
-from .xfree86 import XFree86_colors
+from xfree86 import XFree86_colors
 
 
 __all__ = ["HEX", "Color", "hex2web", "web2hex", "hex2rgb", "hex2dec",
     "rgb2hex", "rgb2hsv", "hsv2rgb", "rgb2hls", "hls2rgb","yuv2rgb", "rgb2yuv",
-    "to_intensity", "ColorMapTools", "yuv2rgb_int", "rgb2yuv_int", "Colormap"
+    "to_intensity", "yuv2rgb_int", "rgb2yuv_int", "Colormap"
     ]
 
 
@@ -698,7 +698,6 @@ class Colormap(object):
         http://matplotlib.org/examples/color/colormaps_reference.html
     """
 
-    from matplotlib import cm as _cm
 
     def _get_colormap_mpl(self):
         from matplotlib.pyplot import colormaps as _cmaps
@@ -779,8 +778,8 @@ class Colormap(object):
         if colors in self.colormaps:
             if reverse and colors.endswith("_r") is False:
                 colors += "_r"
-            #return self._cm.colors.Colormap(colors, N)
-            return self._cm.get_cmap(colors, N)
+            from matplotlib.cm import get_cmap
+            return get_cmap(colors)
 
         # Keep these dependencies inside the function to allow
         # installation of colormap without those dependencies
@@ -925,10 +924,3 @@ class Colormap(object):
         # Turn off *all* ticks & spines, not just the ones with colormaps.
         for ax in axes:
             ax.set_axis_off()
-
-
-class ColorMapTools(Colormap):
-    def __init__(self):
-        print('deprecated. please use Colormap instead')
-
-
