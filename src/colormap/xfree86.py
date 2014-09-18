@@ -1,21 +1,20 @@
 # -*- python -*-
 # -*- coding: utf-8 -*-
 #
-#  This file is part of the easydev software
+# This file is part of the colormap software
 #
-#  Copyright (c) 2011-2014
+# Copyright (c) 2014
 #
-#  File author(s): Thomas Cokelaer <cokelaer@gmail.com>
+# File author(s): Thomas Cokelaer <cokelaer@gmail.com>
 #
-#  Distributed under the GPLv3 License.
-#  See accompanying file LICENSE.txt or copy at
-#      http://www.gnu.org/licenses/gpl-3.0.html
+# Distributed under the GPLv3 License.
+# See accompanying file LICENSE.txt or copy at
+# http://www.gnu.org/licenses/gpl-3.0.html
 #
-#  Website: https://github.com/cokelaer/easydev
-#  Documentation: http://packages.python.org/easydev
+# Website: https://www.github.com/cokelaer/colormap
+# Documentation: http://packages.python.org/colormap
 #
 ##############################################################################
-# $:Id $
 
 __all__ = ["XFree86_colors"]
 

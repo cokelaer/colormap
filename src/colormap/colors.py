@@ -15,7 +15,6 @@
 #  Documentation: http://packages.python.org/colormap
 #
 ##############################################################################
-# $:Id $
 """Utilities provided in this module can be found either in the
 standard Python module called :mod:`colorsys` or in matplotlib.colors
 (e.g rgb2hex) or are original to this module (e.g., rgb2huv)
