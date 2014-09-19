@@ -11,5 +11,6 @@ colors
     :synopsis: 
 
 
+.. automodule:: colormap.get_cmap
  
 .. automodule:: colormap.xfree86

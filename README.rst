@@ -45,12 +45,26 @@ Installation
 Example
 ##########
 
-Create your own colormap from red to green colors with intermediate color as
-whitish (diverging map from red to green)::
+* Create your own colormap from red to green colors with intermediate color as
+  whitish (diverging map from red to green)::
 
-    c = Colormap()
-    mycmap = c.cmap( {'red':[1,1,0], 'green':[0,1,.39], 'blue':[0,1,0]})
-    cmap = c.test_colormap(mycmap)
+      c = Colormap()
+      mycmap = c.cmap( {'red':[1,1,0], 'green':[0,1,.39], 'blue':[0,1,0]})
+      cmap = c.test_colormap(mycmap)
+
+* Even simpler if the colormap is linear::
+
+      c = Colormap()
+      mycmap = c.cmap_linear('red', 'white', 'green')
+      cmap = c.test_colormap(mycmap)
+
+* check out the available colormaps::
+
+      c = Colormap()
+      c.plot_colormap('diverging')
+
+.. image::    
+
 
 See user guide for details.
 

@@ -6,7 +6,7 @@ Prerequisites
 ===============
 
 You will need to install `Python <http://www.python.org/download/>`_
-(linux and mac users should have it installed already). We recommend also to install `ipython <http://ipython.org/>`_, which provides a more flexible shell alternative to the python shell itself. **colormap** requires matplotlib and **easydev**, which are available on pypi and installed automatically with this package.
+(linux and mac users should have it installed already). We recommend also to install `ipython <http://ipython.org/>`_, which provides a more flexible shell alternative to the python shell itself. **colormap** requires **matplotlib** and **easydev**, which are available on pypi and installed automatically with this package.
 
 Installation
 ================
@@ -14,15 +14,31 @@ Since **colormap** is available on `PyPi <http://pypi.python.org/colormap>`_, th
 
     pip install colormap
 
-Example
+Examples
 ##########
 
 Create your own colormap from red to green colors with intermediate color as
-whitish (diverging map from red to green)::
+whitish (diverging map from red to green):
+
+.. plot::   
+    :include-source:
+    :width: 60%
+
+    from colormap import Colormap
+    c = Colormap()
+    mycmap = c.cmap_linear('red', 'white', 'green(w3c)')
+    c.test_colormap(mycmap)
+
+
+Another convenient function is to look at a set of colormaps altogether::
 
     c = Colormap()
-    mycmap = c.cmap( {'red':[1,1,0], 'green':[0,1,.39],  'blue':[0,1,0]})
-    c.test_colormap(mycmap)
+    c.plot_colormap('diverging')
+
+
+.. image:: ../images/colormaps.png
+    :width: 40%
+    :align: center
 
 See user guide for details.
 

@@ -1,1 +1,2 @@
+0.9.1: add cmap_linear method. add get_cmap function, add new colormaps
 0.9.0 Creation

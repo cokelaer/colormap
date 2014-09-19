@@ -115,17 +115,40 @@ visualise colormaps
     >>> c = Colormap()
     >>> c.plot_colormap('sequentials')
 
-Try with other sets: sequential2, misc, diverging and qualitative    
+Try with other sets: 
+
+* sequentials2, 
+* misc
+* diverging
+* qualitative
 
 
-Create your own colormap
+Create a linear colormap 
 -------------------------------
 
-Let us imagine you want a colormap, which is not available in matplotlib. Let us
-create it. Assuming you want a diverging colormap that goes from red to green
-with intermediate values being white.
+The simplest colormap are linear with 3 colors. In such case, we provide a
+method that is easy to use. Imagine you want a colormap from red to green with
+white color in between::
 
-First, we need to know the RGB components of the color::
+    c = Colormap()
+    cmap = cmap_linear('red', 'white', 'green')
+    c.test_colormap(cmap)
+    
+Here, we use color names, which are the xfree86 names. However, you could have
+used any format accepted by :class:`~colormap.Colors`::
+
+    red = Color('red')
+    cmap = cmap_linear(red, 'white', '#0000FF')
+
+Create a general colormap
+-----------------------------
+
+In the previous example, we used 3 colors assuming a linear scale. However, you
+may want a different scale, in which case, you need to provide more colors. In
+such case, you can use :meth:`~colormap.colors.Colormap.cmap` method.
+
+Here we again use the same example a above but it can be generalised easily. 
+First, we need to know the RGB components of the colors::
 
     >>> from colormap import Color, Colormap
     >>> green = Color('Dark Green').rgb
@@ -157,7 +180,6 @@ Finally, test it::
    c = Colormap()
    c.test_colormap(c.cmap({'red':[1,1,0], 'green':[0,1,.39],
                           'blue':[0,1,0]}))
-
 
 
 

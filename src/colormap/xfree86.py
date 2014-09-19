@@ -18,6 +18,8 @@
 
 __all__ = ["XFree86_colors"]
 
+# TC: I have added the "green" key, which is the same as green(x11)
+
 XFree86_colors = {
     "Alice Blue" : "#F0F8FF",
     "AliceBlue" : "#F0F8FF",
@@ -73,6 +75,7 @@ XFree86_colors = {
     "Gray (X11)" : "#BEBEBE",
     "Gray (W3C)" : "#808080",
     "Green (X11)" : "#00FF00",
+    "Green" : "#00FF00",
     "Green (W3C)" : "#008000",
     "Green Yellow" : "#ADFF2F",
     "Honeydew" : "#F0FFF0",

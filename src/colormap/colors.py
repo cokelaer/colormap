@@ -661,7 +661,6 @@ class Colormap(object):
     """Class to create matplotlib colormap
 
     This example show how to get the pre-defined colormap called *heat*
-    and how to define your own colormap in 2 steps.
 
     .. plot::
         :include-source:
@@ -674,6 +673,8 @@ class Colormap(object):
         cmap = c.get_cmap_heat()
         c.test_colormap(cmap)
 
+    You may be more interested in building your own colormap::
+
         # design your own colormap
         d = {'blue': [0,0,0,1,1,1,0],
                 'green':[0,1,1,1,0,0,0],
@@ -682,6 +683,17 @@ class Colormap(object):
 
         # see the results
         c.test_colormap(cmap)
+
+    If you want a simple linear colormap, you can use the example above,
+    or use the :meth:`cmap_linear`. For instance for a diverging colormap
+    from red to green (with with color in between)::
+
+        cmap = c.cmap_linear("red", "white", "green")
+        c.test_colormap(cmap)
+
+
+
+
 
     From matplotlib documentation, colormaps falls into 4 categories:
 
@@ -722,6 +734,12 @@ class Colormap(object):
                  'RdYlGn', 'Spectral', 'bwr', 'coolwarm', 'seismic']
     diverging = property(_get_diverging)
 
+    def _get_diverging_black(self):
+         return ['red_black_sky', 'red_black_blue', 'red_black_green', 'yellow_black_blue',
+                 'yellow_black_sky', 'red_black_orange', 'pink_black_green(w3c)'
+                 ]
+    diverging_black = property(_get_diverging_black)
+
     def _get_qualitative(self):
         return ['Accent', 'Dark2', 'Paired', 'Pastel1', 'Pastel2',
                 'Set1', 'Set2', 'Set3']
@@ -732,6 +750,9 @@ class Colormap(object):
                 'brg', 'CMRmap', 'cubehelix', 'gnuplot', 'gnuplot2', 'gist_ncar',
                 'nipy_spectral', 'jet', 'rainbow', 'gist_rainbow', 'hsv', 'flag', 'prism']
     misc = property(_get_misc)
+
+
+
 
 
     def plot_rgb_from_hex_list(self, cols):
@@ -765,7 +786,25 @@ class Colormap(object):
         pylab.plot(x, blue, 'bo-')
         pylab.ylim([-0.1, 1.1])
 
-    def cmap(self, colors=None, reverse=False, N=50):
+    def cmap_linear(self, color1, color2, color3):
+        """Provide 3 colors in format accepted by :class:`Color`
+
+        ::
+
+            red = Color('red')
+            cmap = cmap_linear(red, 'white', '#0000FF')
+
+        """
+        c1 = Color(color1)
+        c2 = Color(color2)
+        c3 = Color(color3)
+        dico = {'red': [c1.red, c2.red, c3.red],
+                'green':[c1.green, c2.green, c3.green],
+                'blue':[c1.blue, c2.blue, c3.blue]}
+
+        return self.cmap(dico)
+
+    def cmap(self, colors=None, reverse=False, N=256):
         """Return a colormap object to be used within matplotlib
 
         :param dict colors: a dictionary that defines the RGB colors to be
@@ -775,11 +814,24 @@ class Colormap(object):
 
 
         """
+        # matplotlib colormaps
         if colors in self.colormaps:
             if reverse and colors.endswith("_r") is False:
                 colors += "_r"
             from matplotlib.cm import get_cmap
             return get_cmap(colors)
+        # custom ones
+        elif colors in self.diverging_black:
+            c1, c2, c3 = colors.split("_")
+            # special case of sky, which does not exists
+            c3 = c3.replace("sky", "deep sky blue")
+            return self.cmap_linear(c1, c2, c3)
+
+        elif colors == 'heat':
+            return self.get_cmap_heat()
+        elif colors == 'heat_r':
+            return self.get_cmap_heat_r()
+
 
         # Keep these dependencies inside the function to allow
         # installation of colormap without those dependencies
@@ -895,14 +947,14 @@ class Colormap(object):
 
         if isinstance(cmap_list, str):
             if cmap_list in ['sequentials','sequentials2','qualitative',
-                             'misc','diverging']:
+                             'misc','diverging', 'diverging_black']:
                 cmap_list = getattr(self, cmap_list)
             else:
                 cmap_list = [cmap_list]
         if isinstance(cmap_list, list) is not True:
             raise TypeError("""input must be a list of srtings or a single string. Each string should be found. For a user-defined cmap, use test_colormap""")
         for this in cmap_list:
-            if this not in self.colormaps:
+            if this not in self.colormaps and this not in self.diverging_black:
                 raise ValueError("unknown colormap name. Please check valid names in colormaps attribute")
 
         nrows = len(cmap_list)
