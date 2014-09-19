@@ -67,6 +67,4 @@ Example
     :width: 50%
     :align: center
 
-See user guide for details.
-
-
+See oneline documentation for details: http://pythonhosted.org//colormap/
