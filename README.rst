@@ -21,7 +21,11 @@ COLORMAP documentation
     :target: https://waffle.io/cokelaer/colormap
 
 
-Compatible with Python 2.7, 3.3, 3.4
+:version: Python 2.7, 3.3, 3.4
+:contributions: Please join https://github.com/cokelaer/colormap
+:issues: Please use https://github.com/cokelaer/colormap/issues
+
+
 
 
 What is it ?
