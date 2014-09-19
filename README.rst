@@ -63,8 +63,9 @@ Example
       c = Colormap()
       c.plot_colormap('diverging')
 
-.. image::    
-
+.. image:: http://pythonhosted.org//colormap/_images/colormaps.png
+    :width: 50%
+    :align: center
 
 See user guide for details.
 
