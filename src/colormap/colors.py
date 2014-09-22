@@ -846,7 +846,6 @@ class Colormap(object):
         index = np.linspace(0, 1, len(colors['red']))
 
         # Adapt color_data to the form expected by LinearSegmentedColormap.
-        print(colors)
         color_data = dict((key, [(x, y, y) for x, y in zip(index, value)])
                  for key, value in list(colors.items()))
 
