@@ -1,2 +1,4 @@
+0.9.3: add cmap_bicolor method. Rename get_cmap function into cmap_builder to
+avoid clashes with matplotlib
 0.9.1: add cmap_linear method. add get_cmap function, add new colormaps
 0.9.0 Creation

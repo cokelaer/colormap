@@ -31,4 +31,4 @@ from .xfree86 import *
 
 from . import colors
 from .colors import *
-from .get_cmap import get_cmap
+from .get_cmap import cmap_builder

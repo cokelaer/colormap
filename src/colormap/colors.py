@@ -691,9 +691,11 @@ class Colormap(object):
         cmap = c.cmap_linear("red", "white", "green")
         c.test_colormap(cmap)
 
+    Even simpler, you can use a bicolor colormap :meth:`cmap_bicolor`. For instance 
+    for a red to green colormap::
 
-
-
+        cmap = c.cmap_bicolor("red", "green")
+        c.test_colormap(cmap)
 
     From matplotlib documentation, colormaps falls into 4 categories:
 
@@ -751,10 +753,6 @@ class Colormap(object):
                 'nipy_spectral', 'jet', 'rainbow', 'gist_rainbow', 'hsv', 'flag', 'prism']
     misc = property(_get_misc)
 
-
-
-
-
     def plot_rgb_from_hex_list(self, cols):
         """This functions takes a list of hexadecimal values and plots
         the RGB curves. This can be handy to figure out the RGB functions
@@ -786,7 +784,24 @@ class Colormap(object):
         pylab.plot(x, blue, 'bo-')
         pylab.ylim([-0.1, 1.1])
 
-    def cmap_linear(self, color1, color2, color3):
+    def cmap_bicolor(self, color1, color2, reverse=False, N=256):
+        """Provide 3 colors in format accepted by :class:`Color`
+
+        ::
+
+            >>> red = Color('red')
+            >>> white = Color('white')
+            >>> cmap = cmap_bicolor(red, white)
+
+        """
+        c1 = Color(color1)
+        c2 = Color(color2)
+        dico = {'red': [c1.red, c2.red],
+                'green':[c1.green, c2.green],
+                'blue':[c1.blue, c2.blue]}
+        return self.cmap(dico, reverse=reverse, N=N)
+
+    def cmap_linear(self, color1, color2, color3, reverse=False, N=256):
         """Provide 3 colors in format accepted by :class:`Color`
 
         ::
@@ -802,7 +817,7 @@ class Colormap(object):
                 'green':[c1.green, c2.green, c3.green],
                 'blue':[c1.blue, c2.blue, c3.blue]}
 
-        return self.cmap(dico)
+        return self.cmap(dico, reverse=reverse, N=N)
 
     def cmap(self, colors=None, reverse=False, N=256):
         """Return a colormap object to be used within matplotlib

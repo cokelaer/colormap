@@ -15,19 +15,25 @@
 ##############################################################################
 from colormap import Colormap
 
-__all__ = ['get_cmap']
+__all__ = ['get_cmap', 'cmap_builder']
 
 
+def get_cmap(name, name2=None, name3=None):
+    print("Deprecated. please use cmap_builder function instead")
+    return get_cmap(name, name2, name3)
 
-def get_cmap(name):
+def cmap_builder(name, name2=None, name3=None):
     """return a registered colormap
 
     Valid name are those from matplotlib and **heat** (same as in R)
     """
-
     c = Colormap()
     # an R colormap
-    if name == 'heat':
+    if name and name2 and name3:
+        return c.cmap_linear(name, name2, name3)
+    elif name and name2:
+        return c.cmap_bicolor(name, name2)
+    elif name == 'heat':
         return c.get_cmap_heat()
     elif name == 'heat_r':
         return c.get_cmap_heat_r()
