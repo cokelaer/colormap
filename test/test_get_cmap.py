@@ -1,4 +1,4 @@
-from colormap import get_cmap
+from colormap import cmap_builder as get_cmap
 
 
 def test_get_cmap():
