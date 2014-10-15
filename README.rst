@@ -24,7 +24,7 @@ COLORMAP documentation
 :version: Python 2.7, 3.3, 3.4
 :contributions: Please join https://github.com/cokelaer/colormap
 :issues: Please use https://github.com/cokelaer/colormap/issues
-
+:notebook: Please use https://github.com/cokelaer/colormap/notebooks
 
 
 
