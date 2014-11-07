@@ -24,7 +24,6 @@ standard Python module called :mod:`colorsys` or in matplotlib.colors
 # matplotlib dependence is only inside Colormap class
 import colorsys
 from easydev.tools import check_param_in_list, swapdict, check_range
-from colormap import xfree86
 from colormap.xfree86 import XFree86_colors
 
 

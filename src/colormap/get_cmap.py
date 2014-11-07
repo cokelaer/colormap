@@ -53,7 +53,7 @@ def cmap_builder(name, name2=None, name3=None):
     elif name in c.diverging_black:
         return c.cmap(name)
     else:
-        valid = c.colormaps + c.diverging_black
+        #valid = c.colormaps + c.diverging_black
         txt = "name provided {0} is not recognised. ".format(name)
         txt += "\n valid name can be found in colormap.colormap_names"
         raise ValueError(txt)
