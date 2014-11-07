@@ -17,6 +17,9 @@ Since **colormap** is available on `PyPi <http://pypi.python.org/colormap>`_, th
 Examples
 ##########
 
+Using the :class`~colormap.colors.Colormap` class
+=====================================================
+
 Create your own colormap from red to green colors with intermediate color as
 whitish (diverging map from red to green):
 
@@ -30,7 +33,25 @@ whitish (diverging map from red to green):
     c.test_colormap(mycmap)
 
 
-Another convenient function is to look at a set of colormaps altogether::
+Using the aliases
+=====================================================
+
+Without creating an instance of **Colormap**, you can use these functions:
+
+.. plot::
+    :include-source:
+    :width: 60%
+
+    from colormap import cmap_builder, test_cmap
+    mycm = cmap_builder('red', 'black', 'yellow')
+    test_cmap(mycm)
+
+
+
+Visualise set of colormap
+=============================
+
+Another convenient feature is to look at a set of colormaps altogether::
 
     c = Colormap()
     c.plot_colormap('diverging')
@@ -39,6 +60,14 @@ Another convenient function is to look at a set of colormaps altogether::
 .. image:: ../images/colormaps.png
     :width: 40%
     :align: center
+
+Other set names are:
+
+- sequentials2,
+- misc
+- diverging
+- diverging_black
+- qualitative
 
 See user guide for details.
 

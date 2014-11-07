@@ -100,7 +100,7 @@ colormap
 There are lots of colormap in matplotlib. This is great but some may be missing
 or it is not obvious to know what the colormap will look like. 
 
-The :class:`colormap.Colormap` class allows you 
+The :class:`colormap.colors.Colormap` class allows you 
 #. to build easily new colormaps and visualise them
 #. visualise existing colormaps 
 

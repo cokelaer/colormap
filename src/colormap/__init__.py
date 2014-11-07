@@ -32,3 +32,9 @@ from .xfree86 import *
 from . import colors
 from .colors import *
 from .get_cmap import *
+
+c = Colormap()
+colormap_names = c.colormaps + c.diverging_black
+# create an alias to test_colormap methiod
+test_colormap = c.test_colormap
+test_cmap = c.test_colormap

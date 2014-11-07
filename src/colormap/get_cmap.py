@@ -23,9 +23,18 @@ def get_cmap(name, name2=None, name3=None):
     return get_cmap(name, name2, name3)
 
 def cmap_builder(name, name2=None, name3=None):
-    """return a registered colormap
+    """return a colormap object compatible with matplotlib
 
-    Valid name are those from matplotlib and **heat** (same as in R)
+    If only parameter **name** is provided, it should be a known matplotlib 
+    colormap name (e.g., jet). If **name2** is provided, then a new colormap 
+    is created going from the color **name** to the color **name2** with a
+    linear scale. Finally, if **name3** is provided, a linear scaled colormap
+    is built from color **name** to color **name3** with the intermediate color
+    being the **name2**
+
+    Matplotlib colormap map names
+
+
     """
     c = Colormap()
     # an R colormap
@@ -44,5 +53,8 @@ def cmap_builder(name, name2=None, name3=None):
     elif name in c.diverging_black:
         return c.cmap(name)
     else:
-        raise ValueError("name provided {0} is not recognised. ".format(name))
+        valid = c.colormaps + c.diverging_black
+        txt = "name provided {0} is not recognised. ".format(name)
+        txt += "\n valid name can be found in colormap.colormap_names"
+        raise ValueError(txt)
 
