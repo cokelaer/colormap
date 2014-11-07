@@ -11,3 +11,6 @@ def test_get_cmap():
         assert False
     except:
         assert True
+
+    get_cmap('red', 'black', 'yellow')
+    get_cmap('red', 'black')
