@@ -53,9 +53,13 @@ Example
 * Even simpler if the colormap is linear::
 
       c = Colormap()
-      mycmap = c.cmap_linear('red', 'white', 'green')
+      mycmap = c.cmap_linear('red', 'black', 'green')
       cmap = c.test_colormap(mycmap)
 
+.. image:: http://pythonhosted.org//colormap/_images/example.png
+    :width: 50%
+    :align: center
+    
 * check out the available colormaps::
 
       c = Colormap()
