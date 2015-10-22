@@ -15,12 +15,8 @@
 ##############################################################################
 from colormap import Colormap
 
-__all__ = ['get_cmap', 'cmap_builder']
+__all__ = ['cmap_builder']
 
-
-def get_cmap(name, name2=None, name3=None):
-    print("Deprecated. please use cmap_builder function instead")
-    return get_cmap(name, name2, name3)
 
 def cmap_builder(name, name2=None, name3=None):
     """return a colormap object compatible with matplotlib
@@ -52,6 +48,9 @@ def cmap_builder(name, name2=None, name3=None):
     # some custom diverging colormaps with black in the middle.
     elif name in c.diverging_black:
         return c.cmap(name)
+    elif name.count("_") == 2:
+        name1, name2, name3 = name.split("_")
+        return c.cmap_linear(name1, name2, name3)
     else:
         #valid = c.colormaps + c.diverging_black
         txt = "name provided {0} is not recognised. ".format(name)

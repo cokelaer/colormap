@@ -778,9 +778,9 @@ class Colormap(object):
         green = [hex2rgb(x)[1]/255. for x in cols]
         x = pylab.linspace(0, 1, len(cols))
         pylab.clf()
-        pylab.plot(x, red, 'ro-')
-        pylab.plot(x, green, 'go-')
-        pylab.plot(x, blue, 'bo-')
+        pylab.plot(x, red, 'ro-', alpha=0.5)
+        pylab.plot(x, green, 'gs-', alpha=0.5, markersize=15)
+        pylab.plot(x, blue, 'bx-', alpha=0.5, markersize=15)
         pylab.ylim([-0.1, 1.1])
 
     def cmap_bicolor(self, color1, color2, reverse=False, N=256):

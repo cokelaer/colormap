@@ -1,3 +1,5 @@
+0.9.6: remove deprecated function get_cmap; fix issue #1: cmap_builder accepts a
+string with colors separeated by underscores.
 0.9.5: add docstrings and aliases to Colormap.test_cmap method called test_cmap
 0.9.4
 0.9.3: add cmap_bicolor method. Rename get_cmap function into cmap_builder to
