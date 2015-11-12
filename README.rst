@@ -5,9 +5,6 @@ COLORMAP documentation
 .. image:: https://badge.fury.io/py/colormap.svg
     :target: https://pypi.python.org/pypi/colormap
 
-.. image:: https://pypip.in/d/colormap/badge.png
-    :target: https://crate.io/packages/colormap/
-
 .. image:: https://secure.travis-ci.org/cokelaer/colormap.png
     :target: http://travis-ci.org/cokelaer/colormap
 
