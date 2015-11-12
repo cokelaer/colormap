@@ -118,6 +118,9 @@ def rgb2hex(r, g, b, normalised=False):
     """
     if normalised:
         r, g, b = _denormalise(r, g, b, mode="rgb")
+        r = int(r)
+        g = int(g)
+        b = int(b)
     check_range(r, 0, 255)
     check_range(g, 0, 255)
     check_range(b, 0, 255)
@@ -550,7 +553,8 @@ class Color(HEX):
         else:
             # just to warn the user
             self.get_standard_hex_color(value)
-    hex = property(_get_hex, _set_hex, doc="getter/setter the hexadecimal value.")
+    hex = property(_get_hex, _set_hex, 
+            doc="getter/setter the hexadecimal value.")
 
     def _get_rgb(self):
         return self._rgb
@@ -713,8 +717,11 @@ class Colormap(object):
 
 
     def _get_colormap_mpl(self):
-        from matplotlib.pyplot import colormaps as _cmaps
-        return _cmaps()
+        try:
+            from matplotlib.pyplot import colormaps as _cmaps
+            return _cmaps()
+        except:
+            return []
     colormaps = property(_get_colormap_mpl)
 
 
@@ -849,6 +856,7 @@ class Colormap(object):
 
         # Keep these dependencies inside the function to allow
         # installation of colormap without those dependencies
+        # FIXME remove numpy dependencies
         import numpy as np
         # extracted from R, heat.colors(20)
 
