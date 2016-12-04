@@ -1,5 +1,5 @@
 Colormap
-############"
+############
 
 .. image:: https://badge.fury.io/py/colormap.svg
        :target: https://pypi.python.org/pypi/colormap
