@@ -27,7 +27,10 @@ What is it ?
 ################
 
 **colormap** package provides simple utilities to convert colors between
-RGB, HEX, HLS, HUV and a class to easily build colormaps for matplotlib.
+RGB, HEX, HLS, HUV and a class to easily build colormaps for matplotlib. All
+matplotlib colormaps and some R colormaps are available altogether. The
+plot_colormap method (see below) is handy to quickly pick up a colormaps and
+the test_colormap is useful to see test a new colormap.
 
 
 Installation

@@ -297,6 +297,7 @@ def rgb2yuv(r, g, b):
     v = 0.615 * r + -72201./140200 * g + -7011/70100. * b
     return (y, u, v)
 
+
 def yuv2rgb(y, u, v):
     """Convert YUV triplet into RGB
 
@@ -441,8 +442,6 @@ class HEX(object):
         else:
             raise ValueError("hexa string should be 3, 6 or 8 digits. if 8 digits, last 2 are ignored")
         return value
-
-
 
 
 class Color(HEX):
@@ -659,7 +658,6 @@ class Color(HEX):
         return txt
 
 
-
 class Colormap(object):
     """Class to create matplotlib colormap
 
@@ -714,8 +712,6 @@ class Colormap(object):
     :references: matplotlib documentation and examples
         http://matplotlib.org/examples/color/colormaps_reference.html
     """
-
-
     def _get_colormap_mpl(self):
         try:
             from matplotlib.pyplot import colormaps as _cmaps
@@ -723,7 +719,6 @@ class Colormap(object):
         except:
             return []
     colormaps = property(_get_colormap_mpl)
-
 
     def _get_sequentials(self):
         return ['Blues', 'BuGn', 'BuPu', 'GnBu', 'Greens', 'Greys', 'OrRd',
@@ -776,7 +771,6 @@ class Colormap(object):
                  '#0066FFFF', '#001AFFFF', '#3300FFFF', '#7F00FFFF',
                  '#CC00FFFF','#FF00E6FF','#FF0099FF', '#FF004DFF']
             c.plot_rgb_from_hex_list(t)
-
 
         """
         import pylab
@@ -832,7 +826,6 @@ class Colormap(object):
             used in the colormap. See :meth:`get_cmap_heat` for an example.
         :param bool reverse: reverse the colormap is  set to True (defaults to False)
         :param int N: Defaults to 50
-
 
         """
         # matplotlib colormaps
@@ -946,7 +939,6 @@ class Colormap(object):
         colorbar()
         show()
         axis('off')
-
 
     def plot_colormap(self, cmap_list=None):
         """cmap_list list of valid cmap or name of a set (sequential,

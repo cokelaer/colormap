@@ -30,7 +30,6 @@ def cmap_builder(name, name2=None, name3=None):
 
     Matplotlib colormap map names
 
-
     """
     c = Colormap()
     # an R colormap
