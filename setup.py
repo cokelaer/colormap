@@ -34,9 +34,8 @@ metainfo = {
 
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-# on rtd, pandas is 1.3.1 cannot use something better for now (march 2016)
 if on_rtd is True:  # only import and set the theme if we're building docs
-    install_requires = ['matplotlib', 'easydev', "sphinx-gallery", "numpydoc"]
+    install_requires = ['matplotlib', 'easydev', "numpydoc"]
 else:
     install_requires = ['matplotlib', 'easydev']
 

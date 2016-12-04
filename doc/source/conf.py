@@ -16,7 +16,6 @@ import sphinx
 
 sys.path.insert(0, os.path.abspath('sphinxext'))
 
-import sphinx_gallery
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -67,7 +66,6 @@ extensions = [
     ('sphinx.ext.imgmath'  # only available for sphinx >= 1.4
                   if sphinx.version_info[:2] >= (1, 4)
                   else 'sphinx.ext.pngmath'),
-    'sphinx_gallery.gen_gallery'
     ]
 # note that the numpy directives is buggy. Example: class and init are not recognised as two entities for the autoclass_content=both here below
 
@@ -139,13 +137,6 @@ pygments_style = 'sphinx'
 # A list of ignored prefixes for module index sorting.
 modindex_common_prefix = ["gdsctools."]
 
-# -- sphinx gallery ------------------------------------------------------------
-plot_gallery = True
-sphinx_gallery_conf = {
-    "doc_module": "sequana",
-#    "examples_dirs": "examples",
-#    "gallery_dirs": "auto_examples",
-}
 
 # Get rid of spurious warnings due to some interaction between
 # autosummary and numpydoc. See
