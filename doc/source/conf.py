@@ -138,32 +138,6 @@ pygments_style = 'sphinx'
 modindex_common_prefix = ["gdsctools."]
 
 
-# Get rid of spurious warnings due to some interaction between
-# autosummary and numpydoc. See
-# https://github.com/phn/pytpm/issues/3#issuecomment-12133978 for more
-# details
-numpydoc_show_class_members = False
-
-
-# solution from nilearn
-def touch_example_backreferences(app, what, name, obj, options, lines):
-    # generate empty examples files, so that we don't get
-    # inclusion errors if there are no examples for a class / module
-    examples_path = os.path.join(app.srcdir, "modules", "generated",
-                                 "%s.examples" % name)
-    if not os.path.exists(examples_path):
-        # touch file
-        open(examples_path, 'w').close()
-
-
-
-# Add the 'copybutton' javascript, to hide/show the prompt in code
-# examples
-def setup(app):
-    app.add_javascript('copybutton.js')
-    app.connect('autodoc-process-docstring', touch_example_backreferences)
-
-
 
 
 
