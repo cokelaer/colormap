@@ -17,7 +17,7 @@ Since **colormap** is available on `PyPi <http://pypi.python.org/colormap>`_, th
 Examples
 ##########
 
-Using the :class`~colormap.colors.Colormap` class
+Using the :class:`~colormap.colors.Colormap` class
 =====================================================
 
 Create your own colormap from red to green colors with intermediate color as
