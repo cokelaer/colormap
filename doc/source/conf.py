@@ -12,27 +12,33 @@
 # serve to show the default.
 
 import sys, os
+import sphinx
 
+sys.path.insert(0, os.path.abspath('sphinxext'))
+
+import sphinx_gallery
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
+pkg_name = "colormap"
 
-try:
-    import easydev
-    from easydev import get_path_sphinx_themes
-except Exception, e:
-    print "Install easydev or set your PYTHONPATH properly"
-    raise Exception
+# This is for ReadTheDoc
+import matplotlib
+matplotlib.use('Agg')
+
+
 
 import pkg_resources
-version = pkg_resources.require("colormap")[0].version
+version = pkg_resources.require(pkg_name)[0].version
 release = version
 author = "Thomas Cokelaer"
 title = "colormap"
-copyright = author + ", 2014"
+copyright = author + ", 2014-2016"
 project = "colormap"
 
+import easydev
+from easydev import get_path_sphinx_themes
 
 
 # common sphinx extensions
@@ -46,39 +52,28 @@ project = "colormap"
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 
 extensions = [
-    'sphinx.ext.autodoc', 
-    'sphinx.ext.autosummary', 
-    'sphinx.ext.coverage', 
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
     'sphinx.ext.graphviz',
-    'sphinx.ext.doctest', 
-    'sphinx.ext.intersphinx', 
+    'sphinx.ext.doctest',
+    'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
-    'sphinx.ext.coverage', 
-    'sphinx.ext.pngmath',
+    'sphinx.ext.coverage',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'easydev.copybutton',
     'matplotlib.sphinxext.plot_directive',
     'matplotlib.sphinxext.only_directives',
-    'sphinx.ext.graphviz']
-
+    ('sphinx.ext.imgmath'  # only available for sphinx >= 1.4
+                  if sphinx.version_info[:2] >= (1, 4)
+                  else 'sphinx.ext.pngmath'),
+    'sphinx_gallery.gen_gallery'
+    ]
 # note that the numpy directives is buggy. Example: class and init are not recognised as two entities for the autoclass_content=both here below
-
-
-graphviz_output_format = 'png'
-graphviz_dot_args = ['-Gsize=15,15', '-Nfontsize=34']
 
 
 todo_include_todos=True
 jscopybutton_path = "copybutton.js"
-try:
-    from easydev.copybutton import get_copybutton_path 
-    from easydev.copybutton import copy_javascript_into_static_path
-    copy_javascript_into_static_path("_static", get_copybutton_path())
-except:
-    print("could not copy the copybutton javascript")
-
-
 autoclass_content = 'both'
 
 # Add any paths that contain templates here, relative to this directory.
@@ -102,7 +97,7 @@ copyright = copyright
 # built documents.
 #
 # The short X.Y version.
-version = version
+version = "Current version: " + str(version) 
 # The full version, including alpha/beta/rc tags.
 release = release
 
@@ -142,7 +137,43 @@ show_authors = True
 pygments_style = 'sphinx'
 
 # A list of ignored prefixes for module index sorting.
-#modindex_common_prefix = []
+modindex_common_prefix = ["gdsctools."]
+
+# -- sphinx gallery ------------------------------------------------------------
+plot_gallery = True
+sphinx_gallery_conf = {
+    "doc_module": "sequana",
+#    "examples_dirs": "examples",
+#    "gallery_dirs": "auto_examples",
+}
+
+# Get rid of spurious warnings due to some interaction between
+# autosummary and numpydoc. See
+# https://github.com/phn/pytpm/issues/3#issuecomment-12133978 for more
+# details
+numpydoc_show_class_members = False
+
+
+# solution from nilearn
+def touch_example_backreferences(app, what, name, obj, options, lines):
+    # generate empty examples files, so that we don't get
+    # inclusion errors if there are no examples for a class / module
+    examples_path = os.path.join(app.srcdir, "modules", "generated",
+                                 "%s.examples" % name)
+    if not os.path.exists(examples_path):
+        # touch file
+        open(examples_path, 'w').close()
+
+
+
+# Add the 'copybutton' javascript, to hide/show the prompt in code
+# examples
+def setup(app):
+    app.add_javascript('copybutton.js')
+    app.connect('autodoc-process-docstring', touch_example_backreferences)
+
+
+
 
 
 # -- Options for HTML output ---------------------------------------------------
@@ -150,6 +181,14 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  Major themes that come with
 # Sphinx are currently 'default' and 'sphinxdoc'.
 html_theme = 'standard'
+on_rtd = os.environ.get("READTHEDOCS", None) == True
+if not on_rtd:
+    import sphinx_rtd_theme
+    html_theme = 'sphinx_rtd_theme'
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+else:
+    html_theme = "default"
+
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -158,7 +197,7 @@ html_theme = 'standard'
 #html_theme_options = {'homepage': init_sphinx.url}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = [get_path_sphinx_themes()]
+#html_theme_path = [get_path_sphinx_themes()]
 
 
 
@@ -197,10 +236,10 @@ html_last_updated_fmt = '%b %d, %Y'
 html_index = 'index.html'
 
 #Custom sidebar templates, maps page names to templates.
-html_sidebars = {
-                    'index': [ 'indexsidebar.html'], 
-                    'contents':'indexsidebar.html',
-}
+#html_sidebars = {
+#                    'index': [ 'indexsidebar.html'], 
+#                    'contents':'indexsidebar.html',
+#}
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
 #html_additional_pages = {   'index': 'index.html'}
@@ -216,11 +255,11 @@ html_use_index = True
 html_split_index = False
 
 # If true, links to the reST sources are added to the pages.
-#html_show_sourcelink = True
-#html_copy_source = False
+html_show_sourcelink = True
+html_copy_source = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-#html_show_sphinx = True
+html_show_sphinx = True
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 #html_show_copyright = True
@@ -240,7 +279,7 @@ htmlhelp_basename = 'doc'
 # -- Options for LaTeX output --------------------------------------------------
 
 # NOT in original quickstart
-pngmath_use_preview = True
+#imgmath_use_preview = True
 
 # The paper size ('letter' or 'a4').
 latex_paper_size = 'a4'
