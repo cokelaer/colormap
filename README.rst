@@ -8,13 +8,13 @@ COLORMAP documentation
 .. image:: https://secure.travis-ci.org/cokelaer/colormap.png
     :target: http://travis-ci.org/cokelaer/colormap
 
-.. image:: https://coveralls.io/repos/cokelaer/colormap/badge.png?branch=master 
-    :target: https://coveralls.io/r/cokelaer/colormap?branch=master 
+.. image:: https://coveralls.io/repos/cokelaer/colormap/badge.png?branch=master
+    :target: https://coveralls.io/r/cokelaer/colormap?branch=master
 
 .. image:: https://landscape.io/github/cokelaer/colormap/master/landscape.png
     :target: https://landscape.io/github/cokelaer/colormap/master
 
-.. image:: https://badge.waffle.io/cokelaer/colormap.png?label=ready&title=Ready 
+.. image:: https://badge.waffle.io/cokelaer/colormap.png?label=ready&title=Ready
     :target: https://waffle.io/cokelaer/colormap
 
 
@@ -59,7 +59,7 @@ Example
 .. image:: http://pythonhosted.org//colormap/_images/example.png
     :width: 50%
     :align: center
-    
+
 * check out the available colormaps::
 
       c = Colormap()
@@ -69,4 +69,4 @@ Example
     :width: 50%
     :align: center
 
-See online documentation for details: http://pythonhosted.org//colormap/
+See online documentation for details: http://colormap.readthedocs.io/
