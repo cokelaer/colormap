@@ -840,7 +840,6 @@ class Colormap(object):
             # special case of sky, which does not exists
             c3 = c3.replace("sky", "deep sky blue")
             return self.cmap_linear(c1, c2, c3)
-
         elif colors == 'heat':
             return self.get_cmap_heat()
         elif colors == 'heat_r':

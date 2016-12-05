@@ -23,6 +23,9 @@ COLORMAP documentation
 :issues: Please use https://github.com/cokelaer/colormap/issues
 :notebook: Please see https://github.com/cokelaer/colormap/tree/master/notebooks
 
+
+Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
+
 What is it ?
 ################
 
@@ -56,7 +59,7 @@ Example
       mycmap = c.cmap_linear('red', 'black', 'green')
       cmap = c.test_colormap(mycmap)
 
-.. image:: http://pythonhosted.org//colormap/_images/example.png
+.. image:: http://colormap.readthedocs.io/en/latest/_images/index-1.png
     :width: 50%
     :align: center
 
@@ -65,7 +68,7 @@ Example
       c = Colormap()
       c.plot_colormap('diverging')
 
-.. image:: http://pythonhosted.org//colormap/_images/colormaps.png
+.. image:: http://colormap.readthedocs.io/en/latest/_images/colormaps.png
     :width: 50%
     :align: center
 
