@@ -13,9 +13,6 @@ Colormap
 .. image:: https://landscape.io/github/cokelaer/colormap/master/landscape.png
        :target: https://landscape.io/github/cokelaer/colormap/master
 
-.. image:: https://badge.waffle.io/cokelaer/colormap.png?label=ready&title=Ready 
-       :target: https://waffle.io/cokelaer/colormap
-
 
 :version: Python 2.7, 3.3, 3.4, 3.5
 :contributions: Please join https://github.com/cokelaer/colormap

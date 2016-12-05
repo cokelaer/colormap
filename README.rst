@@ -2,6 +2,9 @@
 COLORMAP documentation
 #############################
 
+
+Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
+
 .. image:: https://badge.fury.io/py/colormap.svg
     :target: https://pypi.python.org/pypi/colormap
 
@@ -14,9 +17,6 @@ COLORMAP documentation
 .. image:: https://landscape.io/github/cokelaer/colormap/master/landscape.png
     :target: https://landscape.io/github/cokelaer/colormap/master
 
-.. image:: https://badge.waffle.io/cokelaer/colormap.png?label=ready&title=Ready
-    :target: https://waffle.io/cokelaer/colormap
-
 
 :version: Python 2.7, 3.3, 3.4, 3.5
 :contributions: Please join https://github.com/cokelaer/colormap
@@ -24,7 +24,6 @@ COLORMAP documentation
 :notebook: Please see https://github.com/cokelaer/colormap/tree/master/notebooks
 
 
-Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
 
 What is it ?
 ################
