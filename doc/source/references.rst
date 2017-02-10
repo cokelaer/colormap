@@ -1,3 +1,6 @@
+Reference guide
+#################
+
 
 .. contents::
 
@@ -11,6 +14,11 @@ colors
     :synopsis: 
 
 
+cmap module
+==============
 .. automodule:: colormap.get_cmap
- 
+
+xfree86 module
+==============
+
 .. automodule:: colormap.xfree86

@@ -7,14 +7,14 @@ import glob
 
 _MAJOR               = 1
 _MINOR               = 0
-_MICRO               = 0
+_MICRO               = 1
 version              = '%d.%d.%d' % (_MAJOR, _MINOR, _MICRO)
 release              = '%d.%d' % (_MAJOR, _MINOR)
 
 metainfo = {
     'authors': {'Cokelaer':('Thomas Cokelaer','cokelaer@ebi.ac.uk')},
     'version': version,
-    'license' : 'GPL',
+    'license' : 'LGPL',
     'download_url' : ['http://pypi.python.org/pypi/colormap'],
     'url' : ["http://packages.python.org/colormap/"],
     'description':'Utilities to ease manipulation of matplotlib colormaps and color codecs (e.g., hex2rgb)',

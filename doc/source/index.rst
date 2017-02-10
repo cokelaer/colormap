@@ -26,9 +26,7 @@ What is it ?
 RGB, HEX, HLS, HUV and a class to easily build colormaps for matplotlib. All
 matplotlib colormaps and some R colormaps are available altogether. The
 plot_colormap method (see below) is handy to quickly pick up a colormaps and
-the test_colormap is useful to see test a new colormap.
-
-
+the test_colormap function is useful to see/test a new colormap.
 
 
 Installation
@@ -46,6 +44,12 @@ Since **colormap** is available on `PyPi <http://pypi.python.org/colormap>`_, th
 
     pip install colormap
 
+colormap is also available on Conda (conda-forge)::
+
+    conda install colormap
+
+
+
 Examples
 ##########
 
@@ -55,7 +59,7 @@ Using the :class:`~colormap.colors.Colormap` class
 Create your own colormap from red to green colors with intermediate color as
 whitish (diverging map from red to green):
 
-.. plot::   
+.. plot::
     :include-source:
     :width: 60%
 
@@ -104,7 +108,7 @@ Other set names are:
 See user guide for details.
 
 
-User guide
+User Guide
 ##################
 
 
