@@ -1,8 +1,9 @@
 language: python
 matrix:
   include:
+    # 3.3 used to work as well but somehow failed Feb 2017 for no apparent
+    # reason saying that package "python" cannot be built
     - python: 2.7
-    - python: 3.3
     - python: 3.4
     - python: 3.5
     - python: 3.6
@@ -12,12 +13,11 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
   - "sudo apt-get install -q libatlas3gf-base libatlas-dev liblapack-dev gfortran"
 
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+# command to install dependencies
+# nose already installed
 install:
-  - pip install nose 
   - pip install matplotlib --upgrade
   - pip install easydev
-  - pip install nose coverage
   - pip install coveralls
 # # command to run tests, e.g. python setup.py test
 script:
