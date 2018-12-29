@@ -18,7 +18,7 @@ before_install:
 install:
   - pip install matplotlib --upgrade
   - pip install easydev
-  - pip install pytest pytest-xdist pytest-cov coveralls
+  - pip install pytest pytest-xdist pytest-cov coveralls pytest-timeout
 # # command to run tests, e.g. python setup.py test
 script:
   - pytest -v --durations=10  test/ --cov=spectrum --cov-report term --timeout 300 
