@@ -28,7 +28,7 @@ before_install:
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
   - conda install --yes --file requirements.txt
-  - pip install pytest pytest-xdist pytest-cov coveralls pytest-timeout pytest-runner
+  - pip install pytest pytest-xdist pytest-cov coveralls pytest-timeout pytest-runner nose
   - pip install .
 # # command to run tests, e.g. python setup.py test
 script:
