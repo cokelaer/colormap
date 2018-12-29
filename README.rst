@@ -55,7 +55,7 @@ Example
 * Even simpler if the colormap is linear::
 
       c = Colormap()
-      mycmap = c.cmap_linear('red', 'black', 'green')
+      mycmap = c.cmap_linear('red', 'white', 'green(w3c)')
       cmap = c.test_colormap(mycmap)
 
 .. image:: http://colormap.readthedocs.io/en/latest/_images/index-1.png
