@@ -15,8 +15,8 @@ metainfo = {
     'authors': {'Cokelaer':('Thomas Cokelaer','cokelaer@ebi.ac.uk')},
     'version': version,
     'license' : 'LGPL',
-    'download_url' : ['http://pypi.python.org/pypi/colormap'],
-    'url' : ["http://packages.python.org/colormap/"],
+    'download_url' : 'http://pypi.python.org/pypi/colormap',
+    'url' :  "http://github.com/cokelaer/colormap",
     'description':'Utilities to ease manipulation of matplotlib colormaps and color codecs (e.g., hex2rgb)',
     'platforms' : ['Linux', 'Unix', 'MacOsX', 'Windows'],
     'keywords' : ["hex2web", "web2hex", "hex2rgb", "rgb2hex", "rgb2hsv", "hsv2rgb", 
@@ -31,6 +31,8 @@ metainfo = {
           'Programming Language :: Python :: 3.3',
           'Programming Language :: Python :: 3.4',
           'Programming Language :: Python :: 3.5',
+          'Programming Language :: Python :: 3.6',
+          'Programming Language :: Python :: 3.7',
           'Topic :: Software Development :: Libraries :: Python Modules'
           ]
     }
