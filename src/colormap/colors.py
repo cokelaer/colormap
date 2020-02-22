@@ -270,9 +270,10 @@ def hls2rgb(h, l, s, normalised=True):
 
 
 def hex2dec(data):
-    """convert integer (data) into hexadecimal."""
+    """convert hexadecimal string (data) into a float in the [0-65536] inclusive range"""
+    if data[0] == '#':
+        data.replace('#', '')
     return int(data, 16)/255.
-
 
 def rgb2yuv(r, g, b):
     """Convert RGB triplet into YUV
