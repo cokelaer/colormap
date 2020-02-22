@@ -33,7 +33,7 @@ version = pkg_resources.require(pkg_name)[0].version
 release = version
 author = "Thomas Cokelaer"
 title = "colormap"
-copyright = author + ", 2014-2016"
+copyright = author + ", 2014-2020"
 project = "colormap"
 
 import easydev

@@ -1,4 +1,7 @@
-
+1.0.3: accepted pull request https://github.com/cokelaer/colormap/pull/9 and
+https://github.com/cokelaer/colormap/pull/8 (doc and small fixes). Also fixed
+travis CI
+1.0.2: 
 1.0.1: ported to conda-forge (fixing metadata)
 1.0.0: stable version
 0.9.7:fix rgb2hex function that raised error in python3.5 due to float being
