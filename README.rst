@@ -8,8 +8,8 @@ Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
 .. image:: https://badge.fury.io/py/colormap.svg
     :target: https://pypi.python.org/pypi/colormap
 
-.. image:: https://github.com/cokelaer/colormap/actions/workflows/main.yml/badge.svg?branch=master
-    :target: https://github.com/cokelaer/colormap/actions/workflows/main.yml
+.. image:: https://github.com/cokelaer/colormap/actions/workflows/ci.yml/badge.svg?branch=master
+    :target: https://github.com/cokelaer/colormap/actions/workflows/ci.yml
     
 .. image:: https://coveralls.io/repos/cokelaer/colormap/badge.png?branch=master
     :target: https://coveralls.io/r/cokelaer/colormap?branch=master
