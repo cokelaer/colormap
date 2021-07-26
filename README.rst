@@ -8,14 +8,14 @@ Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
 .. image:: https://badge.fury.io/py/colormap.svg
     :target: https://pypi.python.org/pypi/colormap
 
-.. image:: https://secure.travis-ci.org/cokelaer/colormap.png
-    :target: http://travis-ci.org/cokelaer/colormap
-
+.. image:: https://github.com/cokelaer/colormap/actions/workflows/main.yml/badge.svg?branch=master
+    :target: https://github.com/cokelaer/colormap/actions/workflows/main.yml
+    
 .. image:: https://coveralls.io/repos/cokelaer/colormap/badge.png?branch=master
     :target: https://coveralls.io/r/cokelaer/colormap?branch=master
 
 
-:version: Python 2.7, 3.4, 3.5, 3.6, 3.7
+:version: Python 2.7, 3.4, 3.5, 3.6, 3.7,3.8
 :contributions: Please join https://github.com/cokelaer/colormap
 :issues: Please use https://github.com/cokelaer/colormap/issues
 :notebook: Please see https://github.com/cokelaer/colormap/tree/master/notebooks
