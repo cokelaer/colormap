@@ -21,18 +21,18 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python }}
+    
     - name: Install the package itself
       run: |
           pip install .
+          pip install pytest pytest-cov coveralls
+    
     - name: Test with pytest
       run: |
-        pip install pytest
-        pip install pytest-cov
-        pytest --cov-report term --cov=colormap
-
+          pytest --cov-report term --cov=colormap
+    
     - name: coveralls            
       run: |
-        pip install coverage
         coveralls --service=github
       env:
           GITHUB_TOKEN: ${{ github.token }}
