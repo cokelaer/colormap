@@ -24,6 +24,7 @@ jobs:
     
     - name: Install the package itself
       run: |
+          pip upgrade pip
           pip install .
           pip install pytest pytest-cov coveralls
     
