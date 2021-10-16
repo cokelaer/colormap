@@ -32,6 +32,14 @@ def cmap_builder(name, name2=None, name3=None):
 
     """
     c = Colormap()
+
+    # if the colormap is already a colormap, nothing to do
+    try:
+        name.get_bad()
+        return name
+    except AttributeError:
+        pass
+
     # an R colormap
     if name and name2 and name3:
         return c.cmap_linear(name, name2, name3)

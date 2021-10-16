@@ -1,3 +1,4 @@
+1.0.4: if a cmap_builded get a colormap as input, simply returns the colormap
 1.0.3: accepted pull request https://github.com/cokelaer/colormap/pull/9 and
 https://github.com/cokelaer/colormap/pull/8 (doc and small fixes). Also fixed
 travis CI
