@@ -11,7 +11,7 @@ Colormap
        :target: https://coveralls.io/r/cokelaer/colormap?branch=master 
 
 
-:version: Python 2.7, 3.4, 3.5, 3.6, 3.7
+:version: Python 3.6, 3.7, 3.8, 3.9
 :contributions: Please join https://github.com/cokelaer/colormap
 :issues: Please use https://github.com/cokelaer/colormap/issues
 :notebook: Please see https://github.com/cokelaer/colormap/tree/master/notebooks
