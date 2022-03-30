@@ -63,7 +63,7 @@ setup(
     # package installation
     package_dir = {'':'src'},
     packages = ['colormap'],
-    requires = install_requires,
+    install_requires = install_requires,
 )
 
 
