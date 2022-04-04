@@ -7,7 +7,7 @@ import glob
 
 _MAJOR               = 1
 _MINOR               = 0
-_MICRO               = 4
+_MICRO               = 5
 version              = '%d.%d.%d' % (_MAJOR, _MINOR, _MICRO)
 release              = '%d.%d' % (_MAJOR, _MINOR)
 
@@ -27,21 +27,21 @@ metainfo = {
           'Intended Audience :: Science/Research',
           'License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)',
           'Operating System :: OS Independent',
-          'Programming Language :: Python :: 3.6',
           'Programming Language :: Python :: 3.7',
           'Programming Language :: Python :: 3.8',
           'Programming Language :: Python :: 3.9',
+          'Programming Language :: Python :: 3.10',
           'Topic :: Software Development :: Libraries :: Python Modules'
           ]
     }
 
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-if on_rtd is True:  # only import and set the theme if we're building docs
-    install_requires = ['matplotlib', 'easydev', "numpydoc"]
-else:
-    install_requires = ['matplotlib', 'easydev']
+with open("requirements.txt", "r") as fin:
+    install_requires = fin.read().split()
 
+if on_rtd is True:  # only import and set the theme if we're building docs
+    install_requires += ["numpydoc"]
 
 
 setup(
@@ -65,7 +65,3 @@ setup(
     packages = ['colormap'],
     install_requires = install_requires,
 )
-
-
-
-

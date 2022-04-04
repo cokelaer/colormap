@@ -10,12 +10,12 @@ Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
 
 .. image:: https://github.com/cokelaer/colormap/actions/workflows/ci.yml/badge.svg?branch=master
     :target: https://github.com/cokelaer/colormap/actions/workflows/ci.yml
-    
+
 .. image:: https://coveralls.io/repos/cokelaer/colormap/badge.png?branch=master
     :target: https://coveralls.io/r/cokelaer/colormap?branch=master
 
 
-:version: Python  3.6, 3.7, 3.8, 3.9
+:version: Python 3.7, 3.8, 3.9, 3.10
 :contributions: Please join https://github.com/cokelaer/colormap
 :issues: Please use https://github.com/cokelaer/colormap/issues
 :notebook: Please see https://github.com/cokelaer/colormap/tree/master/notebooks
@@ -69,3 +69,15 @@ Example
     :align: center
 
 See online documentation for details: http://colormap.readthedocs.io/
+
+changelog
+#########
+
+========= ================================================================================
+Version   Description
+========= ================================================================================
+1.0.5     * remove Python3.6 and added Python3.10 to CI action
+          * Fix issue in setup reported in https://github.com/cokelaer/colormap/pull/14
+          * add requirements in MANIFEST
+          * applied black on all files
+========= ================================================================================
