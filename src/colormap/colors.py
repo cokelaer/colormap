@@ -668,7 +668,7 @@ class Color(HEX):
     blue = property(_get_blue, _set_blue, doc="getter/setter for the blue color in RGB triplet")
 
     def _get_value(self):
-        return self.hls[0]
+        return self.hsv[2]
 
     def _set_value(self, value):
         h, s, v = self.hsv

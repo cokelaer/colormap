@@ -89,6 +89,7 @@ def testColors():
     assert c.rgb == (0, 0 ,1)
     assert c.hex == "#0000FF"
     assert_list_almost_equal( c.hsv, (0.66666666666666,1,1))
+    assert c.value == 1
     assert_list_almost_equal(c.hls, (0.666666666666666, .5,1))
     print(c)
 
