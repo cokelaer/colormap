@@ -15,7 +15,7 @@ Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
     :target: https://coveralls.io/r/cokelaer/colormap?branch=master
 
 
-:version: Python 3.7, 3.8, 3.9, 3.10
+:version: Python 3.8, 3.9, 3.10, 3.11
 :contributions: Please join https://github.com/cokelaer/colormap
 :issues: Please use https://github.com/cokelaer/colormap/issues
 :notebook: Please see https://github.com/cokelaer/colormap/tree/master/notebooks
