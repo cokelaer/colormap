@@ -76,10 +76,10 @@ changelog
 ========= ================================================================================
 Version   Description
 ========= ================================================================================
+1.0.6     * Fix a matplotlib deprecation
+          * Fix RTD documentation
 1.0.5     * remove Python3.6 and added Python3.10 to CI action
           * Fix issue in setup reported in https://github.com/cokelaer/colormap/pull/14
           * add requirements in MANIFEST
           * applied black on all files
-          * Fix a matplotlib deprecation
-          * Fix RTD documentation
 ========= ================================================================================
