@@ -80,4 +80,6 @@ Version   Description
           * Fix issue in setup reported in https://github.com/cokelaer/colormap/pull/14
           * add requirements in MANIFEST
           * applied black on all files
+          * Fix a matplotlib deprecation
+          * Fix RTD documentation
 ========= ================================================================================

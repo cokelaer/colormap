@@ -942,9 +942,8 @@ class Colormap(object):
         if colors in self.colormaps:
             if reverse and colors.endswith("_r") is False:
                 colors += "_r"
-            from matplotlib.cm import get_cmap
-
-            return get_cmap(colors)
+            from matplotlib import colormaps
+            return colormaps[colors]
         # custom ones
         elif colors in self.diverging_black:
             c1, c2, c3 = colors.split("_")
