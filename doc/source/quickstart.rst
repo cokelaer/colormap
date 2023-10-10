@@ -116,15 +116,45 @@ visualise colormaps
     >>> c = Colormap()
     >>> c.plot_colormap('sequentials')
 
-Try with other sets: 
 
-* sequentials2, 
-* misc
-* diverging
-* qualitative
+.. plot::
+    :include-source:
+    :width: 80%
+
+    >>> from colormap import Colormap
+    >>> c = Colormap()
+    >>> c.plot_colormap('sequentials2')
 
 
-Create a linear colormap 
+.. plot::
+    :include-source:
+    :width: 80%
+
+    >>> from colormap import Colormap
+    >>> c = Colormap()
+    >>> c.plot_colormap('misc')
+
+
+.. plot::
+    :include-source:
+    :width: 80%
+
+    >>> from colormap import Colormap
+    >>> c = Colormap()
+    >>> c.plot_colormap('diverging')
+
+
+.. plot::
+    :include-source:
+    :width: 80%
+
+    >>> from colormap import Colormap
+    >>> c = Colormap()
+    >>> c.plot_colormap('qualitative')
+
+
+
+Create a linear colormap
 -------------------------------
 
 The simplest colormap are linear with 3 colors. In such case, we provide a
@@ -134,7 +164,7 @@ white color in between::
     c = Colormap()
     cmap = cmap_linear('red', 'white', 'green')
     c.test_colormap(cmap)
-    
+
 Here, we use color names, which are the xfree86 names. However, you could have
 used any format accepted by :class:`~colormap.Colors`::
 
@@ -163,11 +193,11 @@ For instance RGB values of white are 1,1,1
 
 Second, built a dictionary with the three RGB name (red/green/blue) as keys and with the values being the
 evolution of the red/green/blue when a value goes from 0 to 1. Here, we use a
-linear scaling so we just need 3 values at 0, 0.5, and 1. Therefore we have list of 3 values.
+linear scaling so we just need 3 values at 0, 0.5, and 1. Therefore we have list of 4 values.
 You could provide list of arbitrary lengths if required ::
 
     >>> c = Colormap()
-    >>> mycmap = c.cmap( {'red':[1,1,0], 'green':[0,1,.39],  'blue':[0,1,0]})
+    >>> mycmap = c.cmap( {'red':[1,1,0,1], 'green':[0,1,.39,1],  'blue':[0,1,0,1]})
 
 
 Finally, test it::
@@ -179,8 +209,8 @@ Finally, test it::
 
    from colormap import Colormap
    c = Colormap()
-   c.test_colormap(c.cmap({'red':[1,1,0], 'green':[0,1,.39],
-                          'blue':[0,1,0]}))
+   c.test_colormap(c.cmap({'red':[1,1,0,1], 'green':[0,1,.39,1],
+                          'blue':[0,1,0,1]}))
 
 
 
