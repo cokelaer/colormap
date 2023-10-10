@@ -1,12 +1,12 @@
 Reference guide
-#################
+===================
 
 
 .. contents::
 
 
 colors
-==========
+------------
 
 .. automodule:: colormap.colors
     :members:
@@ -15,10 +15,10 @@ colors
 
 
 cmap module
-==============
+---------------
 .. automodule:: colormap.get_cmap
 
 xfree86 module
-==============
+----------------
 
 .. automodule:: colormap.xfree86

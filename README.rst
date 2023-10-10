@@ -55,7 +55,7 @@ Example
       mycmap = c.cmap_linear('red', 'white', 'green(w3c)')
       cmap = c.test_colormap(mycmap)
 
-.. image:: http://colormap.readthedocs.io/en/latest/_images/index-1.png
+.. image:: https://colormap.readthedocs.io/en/latest/_images/quickstart-6.png
     :width: 50%
     :align: center
 
@@ -64,7 +64,7 @@ Example
       c = Colormap()
       c.plot_colormap('diverging')
 
-.. image:: http://colormap.readthedocs.io/en/latest/_images/colormaps.png
+.. image:: https://colormap.readthedocs.io/en/latest/_images/quickstart-4.png
     :width: 50%
     :align: center
 

@@ -1,16 +1,11 @@
 
-
 |version|, |today|
 
-.. include:: ../README.rst
+.. include:: ../../README.rst
 
 
 
 
-
-
-User Guide
-##################
 
 
 .. toctree::
@@ -18,14 +13,5 @@ User Guide
     :numbered:
 
     quickstart.rst
-
-Reference Guide
-##################
-
-
-.. toctree::
-    :maxdepth: 2
-    :numbered:
-
     references
 

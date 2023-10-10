@@ -159,11 +159,18 @@ Create a linear colormap
 
 The simplest colormap are linear with 3 colors. In such case, we provide a
 method that is easy to use. Imagine you want a colormap from red to green with
-white color in between::
+white color in between:
 
-    c = Colormap()
-    cmap = cmap_linear('red', 'white', 'green')
-    c.test_colormap(cmap)
+.. plot::
+   :include-source:
+   :width: 80%
+
+   from colormap import Colormap
+   c = Colormap()
+   cmap = c.cmap_linear('red', 'white', 'green')
+   cmap = c.test_colormap(cmap)
+
+
 
 Here, we use color names, which are the xfree86 names. However, you could have
 used any format accepted by :class:`~colormap.Colors`::
