@@ -13,7 +13,7 @@ jobs:
     strategy:
       max-parallel: 5
       matrix:
-        python: [3.8, 3.9, "3.10", 3.11, 3.12]
+        python: [3.8, 3.9, "3.10", "3.11", "3.12"]
       fail-fast: false
 
     steps:
@@ -30,11 +30,11 @@ jobs:
 
     - name: Test with pytest
       run: |
-          pytest --cov-report term --cov=colormap
+          poetry run pytest --cov-report term --cov=colormap
 
     - name: coveralls
       run: |
-        coveralls --service=github
+        poetry run coveralls --service=github
       env:
           GITHUB_TOKEN: ${{ github.token }}
 
