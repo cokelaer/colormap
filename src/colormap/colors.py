@@ -336,7 +336,7 @@ def hex2dec(data):
     """convert hexadecimal string (data) into a float in the [0-65536] inclusive range"""
     if data[0] == "#":
         data.replace("#", "")
-    return int(data, 16) / 255.0
+    return int(data, 16) / 255
 
 
 def rgb2yuv(r, g, b):
@@ -358,8 +358,8 @@ def rgb2yuv(r, g, b):
     # v = int(0.615 * r + -0.51499 * g + -0.10001 * b)
 
     y = 0.299 * r + 0.587 * g + 0.114 * b
-    u = -32591.0 / 221500.0 * r + -63983.0 / 221500.0 * g + 0.436 * b
-    v = 0.615 * r + -72201.0 / 140200 * g + -7011 / 70100.0 * b
+    u = -32591 / 221500 * r + -63983 / 221500 * g + 0.436 * b
+    v = 0.615 * r + -72201 / 140200 * g + -7011 / 70100 * b
     return (y, u, v)
 
 
@@ -374,7 +374,7 @@ def yuv2rgb(y, u, v):
     check_range(y, 0, 1)
     check_range(u, 0, 1)
     check_range(v, 0, 1)
-    A, B, C, D = 701.0 / 615.0, 25251.0 / 63983.0, 209599.0 / 361005.0, 443.0 / 218.0
+    A, B, C, D = 701 / 615, 25251 / 63983, 209599 / 361005, 443 / 218
     r = y + A * v
     g = y - B * u - C * v
     b = y + D * u
@@ -394,8 +394,8 @@ def rgb2yuv_int(r, g, b):
     check_range(b, 0, 255)
 
     y = int(0.299 * r + 0.587 * g + 0.114 * b)
-    u = int(-32591.0 / 221500.0 * r + -63983.0 / 221500.0 * g + 0.436 * b)
-    v = int(0.615 * r + -72201.0 / 140200 * g + -7011 / 70100.0 * b)
+    u = int(-32591 / 221500 * r + -63983 / 221500 * g + 0.436 * b)
+    v = int(0.615 * r + -72201 / 140200 * g + -7011 / 70100 * b)
 
     return (y, u, v)
 
@@ -420,17 +420,17 @@ def yuv2rgb_int(y, u, v):
 def _denormalise(r, g, b, mode="rgb"):
     check_param_in_list(mode, ["rgb", "hls", "hsv"])
     if mode == "rgb":
-        return r * 255.0, g * 255.0, b * 255.0
+        return r * 255, g * 255, b * 255
     elif mode in ["hls", "hsv"]:
-        return r * 360.0, g * 100.0, b * 100.0
+        return r * 360, g * 100, b * 100
 
 
 def _normalise(r, g, b, mode="rgb"):
     check_param_in_list(mode, ["rgb", "hls", "hsv"])
     if mode == "rgb":
-        return r / 255.0, g / 255.0, b / 255.0
+        return r / 255, g / 255, b / 255
     elif mode in ["hls", "hsv"]:
-        return r / 360.0, g / 100.0, b / 100.0
+        return r / 360, g / 100, b / 100
 
 
 def to_intensity(n):
@@ -440,7 +440,7 @@ def to_intensity(n):
     :return: value between 0 and 255; round(n*127.5+127.5)
     """
     check_range(n, 0, 1)
-    return int(round(n * 127.5 + 127.5))
+    return round(n * 127.5 + 127.5)
 
 
 class HEX(object):
@@ -932,9 +932,9 @@ class Colormap(object):
         """
         import pylab
 
-        red = [hex2rgb(x)[0] / 255.0 for x in cols]
-        blue = [hex2rgb(x)[2] / 255.0 for x in cols]
-        green = [hex2rgb(x)[1] / 255.0 for x in cols]
+        red = [hex2rgb(x)[0] / 255 for x in cols]
+        blue = [hex2rgb(x)[2] / 255 for x in cols]
+        green = [hex2rgb(x)[1] / 255 for x in cols]
         x = pylab.linspace(0, 1, len(cols))
         pylab.clf()
         pylab.plot(x, red, "ro-", alpha=0.5)
@@ -1129,7 +1129,7 @@ class Colormap(object):
 
         nrows = len(cmap_list)
 
-        gradient = [x / 255.0 for x in range(0, 256)]
+        gradient = [x / 255 for x in range(0, 256)]
         gradient = [gradient, gradient]
         # np.vstack((gradient, gradient))
 
@@ -1140,7 +1140,7 @@ class Colormap(object):
             ax.imshow(gradient, aspect="auto", cmap=self.cmap(name))
             pos = list(ax.get_position().bounds)
             x_text = pos[2] + 0.08
-            y_text = pos[1] + pos[3] / 2.0
+            y_text = pos[1] + pos[3] / 2
             fig.text(x_text, y_text, name, va="center", ha="left", fontsize=10)
 
         # Turn off *all* ticks & spines, not just the ones with colormaps.
