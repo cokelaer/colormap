@@ -8,17 +8,17 @@ Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
 .. image:: https://badge.fury.io/py/colormap.svg
     :target: https://pypi.python.org/pypi/colormap
 
-.. image:: https://github.com/cokelaer/colormap/actions/workflows/ci.yml/badge.svg?branch=master
+.. image:: https://github.com/cokelaer/colormap/actions/workflows/ci.yml/badge.svg?branch=main
     :target: https://github.com/cokelaer/colormap/actions/workflows/ci.yml
 
-.. image:: https://coveralls.io/repos/cokelaer/colormap/badge.png?branch=master
-    :target: https://coveralls.io/r/cokelaer/colormap?branch=master
+.. image:: https://coveralls.io/repos/cokelaer/colormap/badge.png?branch=main
+    :target: https://coveralls.io/r/cokelaer/colormap?branch=main
 
 
 :version: Python 3.8, 3.9, 3.10, 3.11, 3.12
 :contributions: Please join https://github.com/cokelaer/colormap
 :issues: Please use https://github.com/cokelaer/colormap/issues
-:notebook: Please see https://github.com/cokelaer/colormap/tree/master/notebooks
+:notebook: Please see https://github.com/cokelaer/colormap/tree/main/notebooks
 
 
 
