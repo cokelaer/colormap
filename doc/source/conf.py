@@ -60,7 +60,6 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.ifconfig",
     "sphinx.ext.viewcode",
-    "easydev.copybutton",
     "matplotlib.sphinxext.plot_directive",
     (
         "sphinx.ext.imgmath"  # only available for sphinx >= 1.4
