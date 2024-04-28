@@ -23,9 +23,8 @@ standard Python module called :mod:`colorsys` or in matplotlib.colors
 """
 # matplotlib dependence is only inside Colormap class
 import colorsys
-from easydev.tools import check_param_in_list, swapdict, check_range
-from colormap.xfree86 import XFree86_colors
 
+from colormap.xfree86 import XFree86_colors
 
 __all__ = [
     "HEX",
@@ -46,6 +45,53 @@ __all__ = [
     "rgb2yuv_int",
     "Colormap",
 ]
+
+
+def check_range(data, dmin, dmax):
+    if data < dmin or data > dmax:
+        raise ValueError(f"Value must be in the range [{dmin}-{dmax}]. You provided {data}")
+
+
+def swapdict(dic, check_ambiguity=True):
+    """Swap keys for values in a dictionary
+
+    ::
+
+        >>> d = {'a':1}
+        >>> swapdict(d)
+        {1:'a'}
+
+    """
+    # this version is more elegant but slightly slower : return {v:k for k,v in dic.items()}
+    if check_ambiguity:
+        assert len(set(dic.keys())) == len(set(dic.values())), "values is not a set. ambiguities for keys."
+    return dict(zip(dic.values(), dic.keys()))
+
+
+def check_param_in_list(param, valid_values, name=None):
+    """Checks that the value of param is amongst valid
+
+    :param param: a parameter to be checked
+    :param list valid_values: a list of values
+
+    ::
+
+        check_param_in_list(1, [1,2,3])
+        check_param_in_list(mode, ["on", "off"])
+    """
+    if isinstance(valid_values, list) is False:
+
+        raise TypeError(
+            "the valid_values second argument must be a list of valid values. {0} was provided.".format(valid_values)
+        )
+
+    if param not in valid_values:
+        if name:
+            msg = "Incorrect value provided for {} ({})".format(name, param)
+        else:
+            msg = "Incorrect value provided (%s)" % param
+        msg += "    Correct values are %s" % valid_values
+        raise ValueError(msg)
 
 
 def hex2web(hexa):
@@ -136,9 +182,11 @@ def rgb2hex(r, g, b, normalised=False):
         r = int(r)
         g = int(g)
         b = int(b)
+
     check_range(r, 0, 255)
     check_range(g, 0, 255)
     check_range(b, 0, 255)
+
     return "#%02X%02X%02X" % (r, g, b)
 
 
@@ -943,6 +991,7 @@ class Colormap(object):
             if reverse and colors.endswith("_r") is False:
                 colors += "_r"
             from matplotlib import colormaps
+
             return colormaps[colors]
         # custom ones
         elif colors in self.diverging_black:
@@ -1038,13 +1087,13 @@ class Colormap(object):
         if cmap is None:
             cmap = self.get_cmap_heat()
         import numpy as np
-        from pylab import clf, pcolor, colorbar, show, linspace, axis
+        from pylab import axis, clf, colorbar, linspace, pcolor, show
 
         A, B = np.meshgrid(linspace(0, 10, 100), linspace(0, 10, 100))
         clf()
         pcolor((A - 5) ** 2 + (B - 5) ** 2, cmap=cmap)
         colorbar()
-        show()
+        # show()
         axis("off")
 
     def plot_colormap(self, cmap_list=None):

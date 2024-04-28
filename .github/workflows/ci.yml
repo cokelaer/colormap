@@ -3,10 +3,9 @@ name: Tests
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
-    branches:
-      - master
+    branches-ignore: []
 
 jobs:
   build-linux:
@@ -17,7 +16,6 @@ jobs:
         python: [3.8, 3.9, "3.10", 3.11, 3.12]
       fail-fast: false
 
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.X
@@ -27,9 +25,8 @@ jobs:
 
     - name: Install the package itself
       run: |
-          pip install --upgrade pip
-          pip install .
-          pip install pytest pytest-cov coveralls pytest-xdist pytest-timeout
+          pip install poetry
+          poetry install --with dev
 
     - name: Test with pytest
       run: |

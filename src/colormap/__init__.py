@@ -16,22 +16,24 @@
 #
 ##############################################################################
 """main colormap module"""
-from __future__ import print_function
-from __future__ import division
-
-import pkg_resources
-
-try:
-    version = pkg_resources.require("colormap")[0].version
-    __version__ = version
-except Exception:
-    version = ""
+from importlib import metadata
 
 
-from .xfree86 import *
+def get_package_version(package_name):
+    try:
+        version = metadata.version(package_name)
+        return version
+    except metadata.PackageNotFoundError:
+        return f"{package_name} not found"
+
+
+version = get_package_version("colormap")
+
+
 from . import colors
 from .colors import *
 from .get_cmap import *
+from .xfree86 import *
 
 c = Colormap()
 colormap_names = c.colormaps + c.diverging_black

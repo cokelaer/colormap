@@ -76,6 +76,8 @@ changelog
 ========= ================================================================================
 Version   Description
 ========= ================================================================================
+1.1.0     * switch to pyproject. remove easydev dependency. compat for python 3.11 and
+            3.12
 1.0.6     * Fix a matplotlib deprecation
           * Fix RTD documentation
 1.0.5     * remove Python3.6 and added Python3.10 to CI action
