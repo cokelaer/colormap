@@ -23,6 +23,16 @@ jobs:
       with:
         python-version: ${{ matrix.python }}
 
+
+    # Handle the numpy installation separately for Python 3.12
+    - name: Install numpy for Python 3.12
+      if: matrix.python == '3.12'
+      run: |
+          pip install --upgrade pip
+          pip install setuptools wheel
+          pip install --no-use-pep517 "numpy" --upgrade  # Upgrade numpy version for 3.12
+
+
     - name: Install the package itself
       run: |
           pip install poetry

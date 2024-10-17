@@ -21,7 +21,6 @@ Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
 :notebook: Please see https://github.com/cokelaer/colormap/tree/main/notebooks
 
 
-
 What is it ?
 ################
 
