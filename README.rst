@@ -17,6 +17,9 @@ Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
 .. image:: https://static.pepy.tech/personalized-badge/colormap?period=month&units=international_system&left_color=black&right_color=orange&left_text=Downloads
     :target: https://pepy.tech/project/colormap
 
+.. image:: http://readthedocs.org/projects/colormap/badge/?version=main
+    :target: http://colormap.readthedocs.org/en/latest/?badge=main
+    :alt: Documentation Status
 
 
 

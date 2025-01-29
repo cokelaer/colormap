@@ -148,6 +148,18 @@ visualise colormaps
     >>> plot_category('qualitative')
 
 
+Visualise existing colormap
+-----------------------------
+
+.. plot::
+    :include-source:
+    :width: 80%
+
+    >>> from colormap import plot_colormap,
+    >>> plot_colormap("viridis")
+
+
+
 
 Create a linear colormap
 -------------------------------
