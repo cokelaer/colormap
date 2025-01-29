@@ -2,7 +2,7 @@
 #
 #  This file is part of colormap software
 #
-#  Copyright (c) 2014L
+#  Copyright (c) 2011-2024
 #
 #  File author(s): Thomas Cokelaer <cokelaer@gmail.com>
 #
@@ -31,7 +31,7 @@ def cmap_builder(name, name2=None, name3=None):
     c = Colormap()
 
     # if the colormap is already a colormap, nothing to do
-    try:
+    try:  # pragma: no cover
         name.get_bad()
         return name
     except AttributeError:
@@ -52,7 +52,7 @@ def cmap_builder(name, name2=None, name3=None):
     # some custom diverging colormaps with black in the middle.
     elif name in c.diverging_black:
         return c.cmap(name)
-    elif name.count("_") == 2:
+    elif name.count("_") == 2:  # pragma: no cover
         name1, name2, name3 = name.split("_")
         return c.cmap_linear(name1, name2, name3)
     else:

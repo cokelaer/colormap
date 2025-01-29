@@ -14,8 +14,14 @@ Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
 .. image:: https://coveralls.io/repos/cokelaer/colormap/badge.png?branch=main
     :target: https://coveralls.io/r/cokelaer/colormap?branch=main
 
+.. image:: https://static.pepy.tech/personalized-badge/colormap?period=month&units=international_system&left_color=black&right_color=orange&left_text=Downloads
+    :target: https://pepy.tech/project/colormap
 
-:version: Python 3.8, 3.9, 3.10, 3.11, 3.12
+
+
+
+
+:version: Python 3.9, 3.10, 3.11, 3.12
 :contributions: Please join https://github.com/cokelaer/colormap
 :issues: Please use https://github.com/cokelaer/colormap/issues
 :notebook: Please see https://github.com/cokelaer/colormap/tree/main/notebooks
@@ -24,11 +30,11 @@ Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
 What is it ?
 ################
 
-**colormap** package provides simple utilities to convert colors between
-RGB, HEX, HLS, HUV and a class to easily build colormaps for matplotlib. All
-matplotlib colormaps and some R colormaps are available altogether. The
+**colormap** package provides utilities to convert colors between
+RGB, HEX, HLS, HUV and a framework to easily create and build colormaps for matplotlib. All
+matplotlib colormaps and some R colormaps are also available altogether. The
 plot_colormap method (see below) is handy to quickly pick up a colormaps and
-the test_colormap is useful to see test a new colormap.
+the test_colormap is useful to see a live version of the new colormap.
 
 
 Installation
@@ -38,18 +44,34 @@ Installation
 
     pip install colormap
 
-Example
-##########
+Usage examples
+###############
 
-* Create your own colormap from red to green colors with intermediate color as
-  whitish (diverging map from red to green)::
+1. convert RGB to HEX:
 
+::
+
+    from colormap import rgb2hex, hex2rgb
+
+    hex_color = rgb2hex(255, 0, 0)  # Red color in HEX
+    print(hex_color)  # Output: "#ff0000"
+
+    rgb_color = hex2rgb("#ff0000")  # Convert back to RGB
+    print(rgb_color)  # Output: (255, 0, 0)
+
+2. Generate a Custom colormap:
+
+Create your own colormap. For instance, from red to green colors with intermediate color as
+whitish (diverging map from red to green)::
+
+      from colormap import Colormap
       c = Colormap()
       mycmap = c.cmap( {'red':[1,1,0], 'green':[0,1,.39], 'blue':[0,1,0]})
       cmap = c.test_colormap(mycmap)
 
-* Even simpler if the colormap is linear::
+Even simpler if the colormap is linear using color's name::
 
+      from colormap import Colormap
       c = Colormap()
       mycmap = c.cmap_linear('red', 'white', 'green(w3c)')
       cmap = c.test_colormap(mycmap)
@@ -58,14 +80,30 @@ Example
     :width: 50%
     :align: center
 
-* check out the available colormaps::
+3. Visualise existing matplotlib colormap:
 
-      c = Colormap()
-      c.plot_colormap('diverging')
+::
+
+      from colormap import plot_colormap, plot_category
+      plot_colormap("viridis")
+
+
+Using the Colormap instance, you can see all valid names using::
+
+      c.colormaps
+
+Matplotlib is very well known in the PYthon ecosystem and has categorised colormaps into categories such as a
+"diverging". To visualise all of them::
+
+      plot_category('diverging')
 
 .. image:: https://colormap.readthedocs.io/en/latest/_images/quickstart-4.png
     :width: 50%
     :align: center
+
+Other sets of colormaps are : sequentials, sequentials2, misc, diverging, qualitative
+
+
 
 See online documentation for details: http://colormap.readthedocs.io/
 
@@ -75,6 +113,9 @@ changelog
 ========= ================================================================================
 Version   Description
 ========= ================================================================================
+1.3.0     * support for poetry 2.0 thanks to @cjwatson PR#26
+          * Slightly better doc
+1.2.0
 1.1.0     * switch to pyproject. remove easydev dependency. compat for python 3.11 and
             3.12
 1.0.6     * Fix a matplotlib deprecation

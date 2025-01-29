@@ -3,7 +3,7 @@
 #
 #  This file is part of the colormap software
 #
-#  Copyright (c) 2011-20134
+#  Copyright (c) 2011-2024
 #
 #  File author(s): Thomas Cokelaer <cokelaer@gmail.com>
 #
@@ -43,6 +43,8 @@ __all__ = [
     "yuv2rgb_int",
     "rgb2yuv_int",
     "Colormap",
+    "plot_category",
+    "plot_colormap",
 ]
 
 
@@ -62,35 +64,9 @@ def swapdict(dic, check_ambiguity=True):
 
     """
     # this version is more elegant but slightly slower : return {v:k for k,v in dic.items()}
-    if check_ambiguity:
+    if check_ambiguity:  # pragma: no cover
         assert len(set(dic.keys())) == len(set(dic.values())), "values is not a set. ambiguities for keys."
     return dict(zip(dic.values(), dic.keys()))
-
-
-def check_param_in_list(param, valid_values, name=None):
-    """Checks that the value of param is amongst valid
-
-    :param param: a parameter to be checked
-    :param list valid_values: a list of values
-
-    ::
-
-        check_param_in_list(1, [1,2,3])
-        check_param_in_list(mode, ["on", "off"])
-    """
-    if isinstance(valid_values, list) is False:
-
-        raise TypeError(
-            "the valid_values second argument must be a list of valid values. {0} was provided.".format(valid_values)
-        )
-
-    if param not in valid_values:
-        if name:
-            msg = "Incorrect value provided for {} ({})".format(name, param)
-        else:
-            msg = "Incorrect value provided (%s)" % param
-        msg += "    Correct values are %s" % valid_values
-        raise ValueError(msg)
 
 
 def hex2web(hexa):
@@ -334,7 +310,7 @@ def hls2rgb(h, l, s, normalised=True):
 def hex2dec(data):
     """convert hexadecimal string (data) into a float in the [0-65536] inclusive range"""
     if data[0] == "#":
-        data.replace("#", "")
+        data = data.replace("#", "")
     return int(data, 16) / 255
 
 
@@ -417,7 +393,7 @@ def yuv2rgb_int(y, u, v):
 
 
 def _denormalise(r, g, b, mode="rgb"):
-    check_param_in_list(mode, ["rgb", "hls", "hsv"])
+    assert mode in ["rgb", "hls", "hsv"], f"Please provide valid mode in [rgb, hls, hsv]. you provided {mode}"
     if mode == "rgb":
         return r * 255, g * 255, b * 255
     elif mode in ["hls", "hsv"]:
@@ -425,7 +401,7 @@ def _denormalise(r, g, b, mode="rgb"):
 
 
 def _normalise(r, g, b, mode="rgb"):
-    check_param_in_list(mode, ["rgb", "hls", "hsv"])
+    assert mode in ["rgb", "hls", "hsv"], f"Please provide valid mode in [rgb, hls, hsv]. you provided {mode}"
     if mode == "rgb":
         return r / 255, g / 255, b / 255
     elif mode in ["hls", "hsv"]:
@@ -596,7 +572,7 @@ class Color(HEX):
         return self._name
 
     def _set_name(self, name):
-        check_param_in_list(name, self.color_names)
+        assert name in self.color_names, f"Please provide valid name from {self.color_names}. you provided {name}"
         name = self.aliases[name]
         self._name = name
         # set hex and rgb at the same time based on the name
@@ -744,7 +720,20 @@ class Color(HEX):
         return txt
 
 
-class Colormap(object):
+def plot_category(name):
+    c = Colormap()
+    assert name in c.categories, f"Use one of {c.categories}. you provided {name}"
+    c.plot_colormap(name)
+    from pylab import title
+
+
+def plot_colormap(name):
+    c = Colormap()
+    assert name in c.colormaps, f"Use one of {c.colormaps}. you provided {name}"
+    c.test_colormap(name)
+
+
+class Colormap:
     """Class to create matplotlib colormap
 
     This example show how to get the pre-defined colormap called *heat*
@@ -799,15 +788,37 @@ class Colormap(object):
         http://matplotlib.org/examples/color/colormaps_reference.html
     """
 
+    def __init__(self):
+        self.categories = [
+            "sequentials2",
+            "sequentials",
+            "misc",
+            "diverging_black",
+            "perceptually_uniform",
+            "diverging",
+            "cyclic",
+            "qualitative",
+        ]
+
     def _get_colormap_mpl(self):
         try:
             from matplotlib.pyplot import colormaps as _cmaps
 
             return _cmaps()
-        except:
+        except Exception:  # pragma: no cover
             return []
 
     colormaps = property(_get_colormap_mpl)
+
+    def _get_cyclic(self):
+        return ["twilight", "twilight_shifted", "hsv"]
+
+    cyclic = property(_get_cyclic)
+
+    def _get_perceptually_uniform(self):
+        return ["viridis", "plasma", "inferno", "magma", "cividis"]
+
+    perceptually_uniform = property(_get_perceptually_uniform)
 
     def _get_sequentials(self):
         return [
@@ -837,16 +848,19 @@ class Colormap(object):
         return [
             "afmhot",
             "autumn",
+            "binary",
             "bone",
             "cool",
             "copper",
             "gist_heat",
+            "gist_gray",
             "gray",
             "hot",
             "pink",
             "spring",
             "summer",
             "winter",
+            "Wistia",
         ]
 
     sequentials2 = property(_get_sequentials2)
@@ -1086,14 +1100,41 @@ class Colormap(object):
         if cmap is None:
             cmap = self.get_cmap_heat()
         import numpy as np
-        from pylab import axis, clf, colorbar, linspace, pcolor, show
+        from pylab import axis, clf, colorbar, linspace, pcolor, show, subplots
 
         A, B = np.meshgrid(linspace(0, 10, 100), linspace(0, 10, 100))
-        clf()
-        pcolor((A - 5) ** 2 + (B - 5) ** 2, cmap=cmap)
-        colorbar()
-        # show()
-        axis("off")
+        fig, ax = subplots(2, 2)
+        ax[0, 0].pcolor((A - 5) ** 2 + (B - 5) ** 2, cmap=cmap)
+        ax[0, 0].axis("off")
+        ax[0, 0].set_title("Linear map in 2D")
+
+        gradient = np.linspace(0, 1, 256)
+        gradient = np.vstack((gradient, gradient))
+        ax[0, 1].imshow(gradient, cmap=cmap, aspect="auto")
+        ax[0, 1].axis("off")
+        ax[0, 1].set_title("Linear map in 1D")
+
+        # Define the sinc function
+        def sinc_2d(x, y):
+            r = np.sqrt(x**2 + y**2)  # Compute radial distance
+            return np.sinc(r)  # sinc(x) in NumPy is already sin(pi*x) / (pi*x)
+
+        # Generate a grid
+        x = np.linspace(-5, 5, 200)
+        y = np.linspace(-5, 5, 200)
+        X, Y = np.meshgrid(x, y)
+        Z = sinc_2d(X, Y)  # Compute sinc values
+        ax[1, 0].imshow(Z, origin="lower", cmap=cmap)
+        ax[1, 0].axis("off")
+        ax[1, 0].set_title("Sinus cardinal")
+
+        N = 100
+        X = np.random.random(N)
+        Y = np.random.random(N)
+        C = np.random.random(N)
+        ax[1, 1].scatter(X, Y, c=C * 10, cmap=cmap)
+        ax[1, 1].set_title("random scatter plot")
+        ax[1, 1].axis("off")
 
     def plot_colormap(self, cmap_list=None):
         """cmap_list list of valid cmap or name of a set (sequential,
@@ -1114,17 +1155,19 @@ class Colormap(object):
         from pylab import subplots
 
         if isinstance(cmap_list, str):
-            if cmap_list in ["sequentials", "sequentials2", "qualitative", "misc", "diverging", "diverging_black"]:
+            if cmap_list in self.categories:
+                colormap = cmap_list
                 cmap_list = getattr(self, cmap_list)
             else:
+                colormap = "custom"
                 cmap_list = [cmap_list]
-        if isinstance(cmap_list, list) is not True:
+        if isinstance(cmap_list, list) is not True:  # pragma: no cover
             raise TypeError(
                 """input must be a list of srtings or a single string. Each string should be found. For a user-defined cmap, use test_colormap"""
             )
         for this in cmap_list:
             if this not in self.colormaps and this not in self.diverging_black:
-                raise ValueError("unknown colormap name. Please check valid names in colormaps attribute")
+                raise ValueError(f"unknown colormap name {this}. Please check valid names in colormaps attribute")
 
         nrows = len(cmap_list)
 
@@ -1134,6 +1177,7 @@ class Colormap(object):
 
         fig, axes = subplots(nrows=nrows)
         fig.subplots_adjust(top=0.95, bottom=0.05, left=0.05, right=0.8)
+        axes[0].set_title(f"{colormap} colormaps")
 
         for ax, name in zip(axes, cmap_list):
             ax.imshow(gradient, aspect="auto", cmap=self.cmap(name))

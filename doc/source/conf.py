@@ -16,8 +16,6 @@ import sys
 
 import sphinx
 
-sys.path.insert(0, os.path.abspath("sphinxext"))
-
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -52,8 +50,8 @@ project = "colormap"
 
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.imgmath",
     "sphinx.ext.autosummary",
-    "sphinx.ext.graphviz",
     "sphinx.ext.doctest",
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
@@ -61,11 +59,6 @@ extensions = [
     "sphinx.ext.ifconfig",
     "sphinx.ext.viewcode",
     "matplotlib.sphinxext.plot_directive",
-    (
-        "sphinx.ext.imgmath"  # only available for sphinx >= 1.4
-        if sphinx.version_info[:2] >= (1, 4)
-        else "sphinx.ext.pngmath"
-    ),
 ]
 # note that the numpy directives is buggy. Example: class and init are not recognised as two entities for the autoclass_content=both here below
 
@@ -135,7 +128,7 @@ show_authors = True
 pygments_style = "sphinx"
 
 # A list of ignored prefixes for module index sorting.
-modindex_common_prefix = ["gdsctools."]
+modindex_common_prefix = ["colormap."]
 
 
 # -- Options for HTML output ---------------------------------------------------
@@ -172,7 +165,7 @@ else:
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-# html_logo = None
+html_logo = "tatic/colormap_logo_256.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32

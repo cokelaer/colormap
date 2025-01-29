@@ -38,6 +38,7 @@ def test_rgb2hls():
 
 def test_hex2dec():
     assert colors.hex2dec("FF") == 1
+    assert colors.hex2dec("#FF") == 1
 
 
 def test_rgb2hex():
@@ -165,6 +166,21 @@ def test_to_intensity():
     to_intensity(0.5)
 
 
+def test_plot_colormap():
+    plot_colormap("jet")
+    plot_colormap("jet_r")
+
+    try:
+        plot_colormap("dummy")
+        assert False
+    except (AssertionError, TypeError):
+        assert True
+
+
+def test_plot_category():
+    plot_category("diverging")
+
+
 def test_colormap():
     try:
         from pylab import clf, close, gcf
@@ -179,6 +195,10 @@ def test_colormap():
     # design your own colormap
     d = {"blue": [0, 0, 0, 1, 1, 1, 0], "green": [0, 1, 1, 1, 0, 0, 0], "red": [1, 1, 0, 0, 0, 1, 1]}
     cmap = c.cmap(d, reverse=True)
+
+    cmap = c.cmap("jet", reverse=True)
+    cmap = c.cmap("heat")
+    cmap = c.cmap("heat_r")
     cmap = c.get_cmap_rainbow()
     cmap = c.get_cmap_red_green()
     cmap = c.get_cmap_heat_r()
@@ -208,13 +228,20 @@ def test_colormap():
     # FIXME: need to find a way to close the plot. close('all') does not work
     # c.plot_rgb_from_hex_list(t)
     c.plot_colormap("misc")
-    # c.plot_colormap('jet')
+    try:
+        c.plot_colormap("dummy")
+        assert False
+    except ValueError:
+        pass
+
     c.test_colormap("jet")
     c.diverging
     c.colormaps
     c.sequentials
     c.sequentials2
     c.qualitative
+    c.cyclic
+    c.perceptually_uniform
 
     t = [
         "#FF0000FF",

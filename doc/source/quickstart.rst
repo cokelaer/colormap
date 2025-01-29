@@ -15,7 +15,7 @@ hexadecimal can be encoded as explained in :meth:`colormap.colors.hex2rgb`:
 normalisation
 ---------------
 
-By default, input should be normalised (e.g., RGB values between 0 and 1) and outputs are normalised. 
+By default, input should be normalised (e.g., RGB values between 0 and 1) and outputs are normalised.
 If you provide unnormalised values (e.g., RGB in 0-255) then set the noramlised
 parameter to True (see example in codecs).
 
@@ -58,7 +58,7 @@ format
 
 * RGB (red/green/blue): a triple of values between 0 and 255
 * HLS (): H in 0-360 and L,S in 0-100
-* HSV (): H in 0-360, S,V in 
+* HSV (): H in 0-360, S,V in
 * YUV: all in 0-1
 
 Color class
@@ -97,13 +97,13 @@ Input when instanciating can be anything in RGB, HEX, HLS, common name from
 colormap
 ============
 
-There are lots of colormap in matplotlib. This is great but some may be missing
-or it is not obvious to know what the colormap will look like. 
+There are lots of colormaps in matplotlib. This is great but some may be missing
+or it is not obvious to know what the colormap will look like.
 
 The :class:`colormap.colors.Colormap` class allows you:
 
 - To build easily new colormaps and visualise them
-- Visualise existing colormaps 
+- Visualise existing colormaps
 
 visualise colormaps
 -------------------------
@@ -112,45 +112,40 @@ visualise colormaps
     :include-source:
     :width: 80%
 
-    >>> from colormap import Colormap
-    >>> c = Colormap()
-    >>> c.plot_colormap('sequentials')
+    >>> from colormap import plot_category
+    >>> plot_categoryp('sequentials')
 
 
 .. plot::
     :include-source:
     :width: 80%
 
-    >>> from colormap import Colormap
-    >>> c = Colormap()
-    >>> c.plot_colormap('sequentials2')
+    >>> from colormap import plot_category
+    >>> plot_category('sequentials2')
 
 
 .. plot::
     :include-source:
     :width: 80%
 
-    >>> from colormap import Colormap
-    >>> c = Colormap()
-    >>> c.plot_colormap('misc')
+    >>> from colormap import plot_category
+    >>> plot_category('misc')
 
 
 .. plot::
     :include-source:
     :width: 80%
 
-    >>> from colormap import Colormap
-    >>> c = Colormap()
-    >>> c.plot_colormap('diverging')
+    >>> from colormap import plot_category
+    >>> plot_category('diverging')
 
 
 .. plot::
     :include-source:
     :width: 80%
 
-    >>> from colormap import Colormap
-    >>> c = Colormap()
-    >>> c.plot_colormap('qualitative')
+    >>> from colormap import plot_category
+    >>> plot_category('qualitative')
 
 
 
@@ -185,7 +180,7 @@ In the previous example, we used 3 colors assuming a linear scale. However, you
 may want a different scale, in which case, you need to provide more colors. In
 such case, you can use :meth:`~colormap.colors.Colormap.cmap` method.
 
-Here we again use the same example a above but it can be generalised easily. 
+Here we again use the same example a above but it can be generalised easily.
 First, we need to know the RGB components of the colors::
 
     >>> from colormap import Color, Colormap
@@ -218,18 +213,3 @@ Finally, test it::
    c = Colormap()
    c.test_colormap(c.cmap({'red':[1,1,0,1], 'green':[0,1,.39,1],
                           'blue':[0,1,0,1]}))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

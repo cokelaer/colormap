@@ -3,7 +3,7 @@
 #
 # This file is part of the colormap software
 #
-# Copyright (c) 2014
+# Copyright (c) 2014-2024
 #
 # File author(s): Thomas Cokelaer <cokelaer@gmail.com>
 #

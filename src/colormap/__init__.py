@@ -3,7 +3,7 @@
 #
 # This file is part of the colormap software
 #
-# Copyright (c) 2014
+# Copyright (c) 2014-2-24
 #
 # File author(s): Thomas Cokelaer <cokelaer@gmail.com>
 #
@@ -22,7 +22,7 @@ def get_package_version(package_name):
     try:
         version = metadata.version(package_name)
         return version
-    except metadata.PackageNotFoundError:
+    except metadata.PackageNotFoundError:  # pragma: no cover
         return f"{package_name} not found"
 
 
