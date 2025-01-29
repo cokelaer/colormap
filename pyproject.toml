@@ -2,14 +2,17 @@
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry]
+[project]
 name = "colormap"
 version = "1.2.0"
 description = "Commn utilities to ease development of Python packages"
-authors = ["Thomas Cokelaer <thomas.cokelaer@pasteur.fr>"]
+authors = [
+    { "name" = "Thomas Cokelaer", "email" = "thomas.cokelaer@pasteur.fr" },
+]
 license = "BSD-3-Clause"
 readme = "README.rst"
 keywords = ["config", "decorators", "development"]
+dynamic = ["dependencies", "requires-python"]
 
 classifiers = [
         "Development Status :: 5 - Production/Stable",
