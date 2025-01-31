@@ -113,7 +113,7 @@ visualise colormaps
     :width: 80%
 
     >>> from colormap import plot_category
-    >>> plot_categoryp('sequentials')
+    >>> plot_category('sequentials')
 
 
 .. plot::
@@ -155,7 +155,7 @@ Visualise existing colormap
     :include-source:
     :width: 80%
 
-    >>> from colormap import plot_colormap,
+    >>> from colormap import plot_colormap
     >>> plot_colormap("viridis")
 
 
