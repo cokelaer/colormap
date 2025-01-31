@@ -3,7 +3,8 @@ COLORMAP documentation
 #############################
 
 
-Please see : http://colormap.readthedocs.io/ for an up-to-date documentation.
+.. image:: https://raw.githubusercontent.com/cokelaer/colormap/main/doc/source/_static/colormap_logo_256.png
+    :target: https://raw.githubusercontent.com/cokelaer/colormap/main/doc/source/_static/colormap_logo_256.png
 
 .. image:: https://badge.fury.io/py/colormap.svg
     :target: https://pypi.python.org/pypi/colormap
