@@ -96,7 +96,7 @@ Using the Colormap instance, you can see all valid names using::
 
       c.colormaps
 
-Matplotlib is very well known in the PYthon ecosystem and has categorised colormaps into categories such as a
+Matplotlib is very well known in the Python ecosystem and has categorised colormaps into categories such as a
 "diverging". To visualise all of them::
 
       plot_category('diverging')
